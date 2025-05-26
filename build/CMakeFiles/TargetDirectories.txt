@@ -1,0 +1,4 @@
+/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/disk_node.dir
+/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/controller.dir
+/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/edit_cache.dir
+/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/rebuild_cache.dir
