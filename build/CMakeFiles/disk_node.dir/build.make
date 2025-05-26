@@ -126,6 +126,7 @@ disk_node: CMakeFiles/disk_node.dir/common/generated/tecmfs.grpc.pb.cc.o
 disk_node: CMakeFiles/disk_node.dir/build.make
 disk_node: /usr/local/lib/libgrpc++.a
 disk_node: /usr/local/lib/libprotobuf.so
+disk_node: /usr/lib/x86_64-linux-gnu/libxml2.so
 disk_node: /usr/local/lib/libgrpc.a
 disk_node: /usr/local/lib/libupb_json_lib.a
 disk_node: /usr/local/lib/libupb_textformat_lib.a

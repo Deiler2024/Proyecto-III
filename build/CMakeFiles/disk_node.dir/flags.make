@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DCARES_STATICLIB
 
-CXX_INCLUDES = -I/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/common/generated
+CXX_INCLUDES = -I/usr/include/libxml2 -I/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/common/generated
 
 CXX_FLAGS = -std=gnu++17
 

@@ -1,0 +1,7 @@
+<DiskNode>
+    <Address>127.0.0.1</Address>
+    <Port>50051</Port>
+    <Path>disk_node/storage</Path>
+    <DiskSize>100</DiskSize>
+    <BlockSize>4096</BlockSize>
+</DiskNode>
