@@ -30,7 +30,7 @@ void RunServer() {
     builder.RegisterService(&service);
 
     std::unique_ptr<Server> server(builder.BuildAndStart());
-    std::cout << "Disk Node esta escuchando en " << server_address << std::endl;
+    std::cout << "Disk Node ESCUCHA en: " << server_address << std::endl;
     server->Wait();
 }
 
