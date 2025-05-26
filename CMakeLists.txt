@@ -3,12 +3,14 @@ project(TECMFS)
 
 set(CMAKE_CXX_STANDARD 17)
 
-# Incluir Protobuf y gRPC
+# Incluir Protobuf, gRPC y libxml2
 find_package(Protobuf REQUIRED)
 find_package(gRPC REQUIRED)
+find_package(LibXml2 REQUIRED)  # ← Agregado
 
 include_directories(
     ${Protobuf_INCLUDE_DIRS}
+    ${LIBXML2_INCLUDE_DIR}  # ← Agregado para libxml2
     ${CMAKE_CURRENT_SOURCE_DIR}/common/generated
 )
 
@@ -31,6 +33,7 @@ add_executable(disk_node
 target_link_libraries(disk_node
     gRPC::grpc++
     ${Protobuf_LIBRARIES}
+    ${LIBXML2_LIBRARIES}  # ← Agregado para libxml2
 )
 
 # Controller

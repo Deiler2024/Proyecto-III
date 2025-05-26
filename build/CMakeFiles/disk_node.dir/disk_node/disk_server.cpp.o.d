@@ -427,6 +427,33 @@ CMakeFiles/disk_node.dir/disk_node/disk_server.cpp.o: \
  /usr/local/include/grpcpp/security/authorization_policy_provider.h \
  /usr/local/include/grpcpp/server_posix.h \
  /usr/local/include/grpcpp/version_info.h \
+ /usr/include/libxml2/libxml/parser.h \
+ /usr/include/libxml2/libxml/xmlversion.h \
+ /usr/include/libxml2/libxml/xmlexports.h \
+ /usr/include/libxml2/libxml/tree.h \
+ /usr/include/libxml2/libxml/xmlstring.h \
+ /usr/include/libxml2/libxml/xmlregexp.h \
+ /usr/include/libxml2/libxml/dict.h /usr/include/libxml2/libxml/hash.h \
+ /usr/include/libxml2/libxml/valid.h \
+ /usr/include/libxml2/libxml/xmlerror.h \
+ /usr/include/libxml2/libxml/list.h \
+ /usr/include/libxml2/libxml/xmlautomata.h \
+ /usr/include/libxml2/libxml/entities.h \
+ /usr/include/libxml2/libxml/encoding.h /usr/include/iconv.h \
+ /usr/include/unicode/ucnv.h /usr/include/unicode/ucnv_err.h \
+ /usr/include/unicode/utypes.h /usr/include/unicode/umachine.h \
+ /usr/include/unicode/ptypes.h /usr/include/unicode/platform.h \
+ /usr/include/unicode/uconfig.h /usr/include/unicode/uvernum.h \
+ /usr/include/unicode/urename.h /usr/include/unicode/uversion.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h \
+ /usr/include/unicode/utf.h /usr/include/unicode/utf8.h \
+ /usr/include/unicode/utf16.h /usr/include/unicode/utf_old.h \
+ /usr/include/unicode/uenum.h /usr/include/unicode/localpointer.h \
+ /usr/include/libxml2/libxml/xmlIO.h \
+ /usr/include/libxml2/libxml/globals.h /usr/include/libxml2/libxml/SAX2.h \
+ /usr/include/libxml2/libxml/xlink.h \
+ /usr/include/libxml2/libxml/xmlmemory.h \
+ /usr/include/libxml2/libxml/threads.h \
  /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/disk_node/../common/generated/tecmfs.grpc.pb.h \
  /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/disk_node/../common/generated/tecmfs.pb.h \
  /usr/local/include/google/protobuf/port_def.inc \
