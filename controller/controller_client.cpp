@@ -8,9 +8,12 @@
 using grpc::Channel;
 using grpc::ClientContext;
 using grpc::Status;
+
 using tecmfs::DiskService;
 using tecmfs::PingRequest;
 using tecmfs::PingResponse;
+using tecmfs::BlockRequest;
+using tecmfs::BlockResponse;
 
 class ControllerClient {
 public:
@@ -27,9 +30,27 @@ public:
         Status status = stub_->Ping(&context, request, &response);
 
         if (status.ok()) {
-            std::cout << "Received: " << response.message() << std::endl;
+            std::cout << "Ping Response: " << response.message() << std::endl;
         } else {
-            std::cout << "RPC failed: " << status.error_message() << std::endl;
+            std::cerr << "Ping failed: " << status.error_message() << std::endl;
+        }
+    }
+
+    void WriteTestBlock() {
+        BlockRequest request;
+        request.set_index(0);
+        request.set_data("Hola, disco!");
+
+        BlockResponse response;
+        ClientContext context;
+
+        Status status = stub_->WriteBlock(&context, request, &response);
+
+        if (status.ok()) {
+            std::cout << "WriteBlock: " << (response.success() ? "✅ OK" : "❌ Falló")
+                      << " - " << response.message() << std::endl;
+        } else {
+            std::cerr << "Error RPC WriteBlock: " << status.error_message() << std::endl;
         }
     }
 
@@ -38,7 +59,11 @@ private:
 };
 
 int main() {
-    ControllerClient client(grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials()));
+    auto channel = grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials());
+    ControllerClient client(channel);
+
     client.SendPing();
+    client.WriteTestBlock();
+
     return 0;
 }

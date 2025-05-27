@@ -45,6 +45,18 @@ struct TableStruct_tecmfs_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_tecmfs_2eproto;
 namespace tecmfs {
+class BlockData;
+struct BlockDataDefaultTypeInternal;
+extern BlockDataDefaultTypeInternal _BlockData_default_instance_;
+class BlockIndex;
+struct BlockIndexDefaultTypeInternal;
+extern BlockIndexDefaultTypeInternal _BlockIndex_default_instance_;
+class BlockRequest;
+struct BlockRequestDefaultTypeInternal;
+extern BlockRequestDefaultTypeInternal _BlockRequest_default_instance_;
+class BlockResponse;
+struct BlockResponseDefaultTypeInternal;
+extern BlockResponseDefaultTypeInternal _BlockResponse_default_instance_;
 class PingRequest;
 struct PingRequestDefaultTypeInternal;
 extern PingRequestDefaultTypeInternal _PingRequest_default_instance_;
@@ -53,6 +65,10 @@ struct PingResponseDefaultTypeInternal;
 extern PingResponseDefaultTypeInternal _PingResponse_default_instance_;
 }  // namespace tecmfs
 PROTOBUF_NAMESPACE_OPEN
+template<> ::tecmfs::BlockData* Arena::CreateMaybeMessage<::tecmfs::BlockData>(Arena*);
+template<> ::tecmfs::BlockIndex* Arena::CreateMaybeMessage<::tecmfs::BlockIndex>(Arena*);
+template<> ::tecmfs::BlockRequest* Arena::CreateMaybeMessage<::tecmfs::BlockRequest>(Arena*);
+template<> ::tecmfs::BlockResponse* Arena::CreateMaybeMessage<::tecmfs::BlockResponse>(Arena*);
 template<> ::tecmfs::PingRequest* Arena::CreateMaybeMessage<::tecmfs::PingRequest>(Arena*);
 template<> ::tecmfs::PingResponse* Arena::CreateMaybeMessage<::tecmfs::PingResponse>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
@@ -364,6 +380,662 @@ class PingResponse final :
   union { Impl_ _impl_; };
   friend struct ::TableStruct_tecmfs_2eproto;
 };
+// -------------------------------------------------------------------
+
+class BlockRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:tecmfs.BlockRequest) */ {
+ public:
+  inline BlockRequest() : BlockRequest(nullptr) {}
+  ~BlockRequest() override;
+  explicit PROTOBUF_CONSTEXPR BlockRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  BlockRequest(const BlockRequest& from);
+  BlockRequest(BlockRequest&& from) noexcept
+    : BlockRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline BlockRequest& operator=(const BlockRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline BlockRequest& operator=(BlockRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const BlockRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const BlockRequest* internal_default_instance() {
+    return reinterpret_cast<const BlockRequest*>(
+               &_BlockRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(BlockRequest& a, BlockRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(BlockRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(BlockRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  BlockRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<BlockRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const BlockRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const BlockRequest& from) {
+    BlockRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(BlockRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "tecmfs.BlockRequest";
+  }
+  protected:
+  explicit BlockRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kDataFieldNumber = 2,
+    kIndexFieldNumber = 1,
+  };
+  // bytes data = 2;
+  void clear_data();
+  const std::string& data() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_data(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_data();
+  PROTOBUF_NODISCARD std::string* release_data();
+  void set_allocated_data(std::string* data);
+  private:
+  const std::string& _internal_data() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_data(const std::string& value);
+  std::string* _internal_mutable_data();
+  public:
+
+  // int32 index = 1;
+  void clear_index();
+  int32_t index() const;
+  void set_index(int32_t value);
+  private:
+  int32_t _internal_index() const;
+  void _internal_set_index(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:tecmfs.BlockRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr data_;
+    int32_t index_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_tecmfs_2eproto;
+};
+// -------------------------------------------------------------------
+
+class BlockResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:tecmfs.BlockResponse) */ {
+ public:
+  inline BlockResponse() : BlockResponse(nullptr) {}
+  ~BlockResponse() override;
+  explicit PROTOBUF_CONSTEXPR BlockResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  BlockResponse(const BlockResponse& from);
+  BlockResponse(BlockResponse&& from) noexcept
+    : BlockResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline BlockResponse& operator=(const BlockResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline BlockResponse& operator=(BlockResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const BlockResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const BlockResponse* internal_default_instance() {
+    return reinterpret_cast<const BlockResponse*>(
+               &_BlockResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(BlockResponse& a, BlockResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(BlockResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(BlockResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  BlockResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<BlockResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const BlockResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const BlockResponse& from) {
+    BlockResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(BlockResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "tecmfs.BlockResponse";
+  }
+  protected:
+  explicit BlockResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kMessageFieldNumber = 2,
+    kSuccessFieldNumber = 1,
+  };
+  // string message = 2;
+  void clear_message();
+  const std::string& message() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_message(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_message();
+  PROTOBUF_NODISCARD std::string* release_message();
+  void set_allocated_message(std::string* message);
+  private:
+  const std::string& _internal_message() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_message(const std::string& value);
+  std::string* _internal_mutable_message();
+  public:
+
+  // bool success = 1;
+  void clear_success();
+  bool success() const;
+  void set_success(bool value);
+  private:
+  bool _internal_success() const;
+  void _internal_set_success(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:tecmfs.BlockResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
+    bool success_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_tecmfs_2eproto;
+};
+// -------------------------------------------------------------------
+
+class BlockIndex final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:tecmfs.BlockIndex) */ {
+ public:
+  inline BlockIndex() : BlockIndex(nullptr) {}
+  ~BlockIndex() override;
+  explicit PROTOBUF_CONSTEXPR BlockIndex(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  BlockIndex(const BlockIndex& from);
+  BlockIndex(BlockIndex&& from) noexcept
+    : BlockIndex() {
+    *this = ::std::move(from);
+  }
+
+  inline BlockIndex& operator=(const BlockIndex& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline BlockIndex& operator=(BlockIndex&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const BlockIndex& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const BlockIndex* internal_default_instance() {
+    return reinterpret_cast<const BlockIndex*>(
+               &_BlockIndex_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(BlockIndex& a, BlockIndex& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(BlockIndex* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(BlockIndex* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  BlockIndex* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<BlockIndex>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const BlockIndex& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const BlockIndex& from) {
+    BlockIndex::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(BlockIndex* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "tecmfs.BlockIndex";
+  }
+  protected:
+  explicit BlockIndex(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kIndexFieldNumber = 1,
+  };
+  // int32 index = 1;
+  void clear_index();
+  int32_t index() const;
+  void set_index(int32_t value);
+  private:
+  int32_t _internal_index() const;
+  void _internal_set_index(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:tecmfs.BlockIndex)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    int32_t index_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_tecmfs_2eproto;
+};
+// -------------------------------------------------------------------
+
+class BlockData final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:tecmfs.BlockData) */ {
+ public:
+  inline BlockData() : BlockData(nullptr) {}
+  ~BlockData() override;
+  explicit PROTOBUF_CONSTEXPR BlockData(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  BlockData(const BlockData& from);
+  BlockData(BlockData&& from) noexcept
+    : BlockData() {
+    *this = ::std::move(from);
+  }
+
+  inline BlockData& operator=(const BlockData& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline BlockData& operator=(BlockData&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const BlockData& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const BlockData* internal_default_instance() {
+    return reinterpret_cast<const BlockData*>(
+               &_BlockData_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    5;
+
+  friend void swap(BlockData& a, BlockData& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(BlockData* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(BlockData* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  BlockData* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<BlockData>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const BlockData& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const BlockData& from) {
+    BlockData::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(BlockData* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "tecmfs.BlockData";
+  }
+  protected:
+  explicit BlockData(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kDataFieldNumber = 1,
+    kMessageFieldNumber = 3,
+    kSuccessFieldNumber = 2,
+  };
+  // bytes data = 1;
+  void clear_data();
+  const std::string& data() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_data(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_data();
+  PROTOBUF_NODISCARD std::string* release_data();
+  void set_allocated_data(std::string* data);
+  private:
+  const std::string& _internal_data() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_data(const std::string& value);
+  std::string* _internal_mutable_data();
+  public:
+
+  // string message = 3;
+  void clear_message();
+  const std::string& message() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_message(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_message();
+  PROTOBUF_NODISCARD std::string* release_message();
+  void set_allocated_message(std::string* message);
+  private:
+  const std::string& _internal_message() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_message(const std::string& value);
+  std::string* _internal_mutable_message();
+  public:
+
+  // bool success = 2;
+  void clear_success();
+  bool success() const;
+  void set_success(bool value);
+  private:
+  bool _internal_success() const;
+  void _internal_set_success(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:tecmfs.BlockData)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr data_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
+    bool success_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_tecmfs_2eproto;
+};
 // ===================================================================
 
 
@@ -479,9 +1151,313 @@ inline void PingResponse::set_allocated_message(std::string* message) {
   // @@protoc_insertion_point(field_set_allocated:tecmfs.PingResponse.message)
 }
 
+// -------------------------------------------------------------------
+
+// BlockRequest
+
+// int32 index = 1;
+inline void BlockRequest::clear_index() {
+  _impl_.index_ = 0;
+}
+inline int32_t BlockRequest::_internal_index() const {
+  return _impl_.index_;
+}
+inline int32_t BlockRequest::index() const {
+  // @@protoc_insertion_point(field_get:tecmfs.BlockRequest.index)
+  return _internal_index();
+}
+inline void BlockRequest::_internal_set_index(int32_t value) {
+  
+  _impl_.index_ = value;
+}
+inline void BlockRequest::set_index(int32_t value) {
+  _internal_set_index(value);
+  // @@protoc_insertion_point(field_set:tecmfs.BlockRequest.index)
+}
+
+// bytes data = 2;
+inline void BlockRequest::clear_data() {
+  _impl_.data_.ClearToEmpty();
+}
+inline const std::string& BlockRequest::data() const {
+  // @@protoc_insertion_point(field_get:tecmfs.BlockRequest.data)
+  return _internal_data();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void BlockRequest::set_data(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.data_.SetBytes(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:tecmfs.BlockRequest.data)
+}
+inline std::string* BlockRequest::mutable_data() {
+  std::string* _s = _internal_mutable_data();
+  // @@protoc_insertion_point(field_mutable:tecmfs.BlockRequest.data)
+  return _s;
+}
+inline const std::string& BlockRequest::_internal_data() const {
+  return _impl_.data_.Get();
+}
+inline void BlockRequest::_internal_set_data(const std::string& value) {
+  
+  _impl_.data_.Set(value, GetArenaForAllocation());
+}
+inline std::string* BlockRequest::_internal_mutable_data() {
+  
+  return _impl_.data_.Mutable(GetArenaForAllocation());
+}
+inline std::string* BlockRequest::release_data() {
+  // @@protoc_insertion_point(field_release:tecmfs.BlockRequest.data)
+  return _impl_.data_.Release();
+}
+inline void BlockRequest::set_allocated_data(std::string* data) {
+  if (data != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.data_.SetAllocated(data, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.data_.IsDefault()) {
+    _impl_.data_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:tecmfs.BlockRequest.data)
+}
+
+// -------------------------------------------------------------------
+
+// BlockResponse
+
+// bool success = 1;
+inline void BlockResponse::clear_success() {
+  _impl_.success_ = false;
+}
+inline bool BlockResponse::_internal_success() const {
+  return _impl_.success_;
+}
+inline bool BlockResponse::success() const {
+  // @@protoc_insertion_point(field_get:tecmfs.BlockResponse.success)
+  return _internal_success();
+}
+inline void BlockResponse::_internal_set_success(bool value) {
+  
+  _impl_.success_ = value;
+}
+inline void BlockResponse::set_success(bool value) {
+  _internal_set_success(value);
+  // @@protoc_insertion_point(field_set:tecmfs.BlockResponse.success)
+}
+
+// string message = 2;
+inline void BlockResponse::clear_message() {
+  _impl_.message_.ClearToEmpty();
+}
+inline const std::string& BlockResponse::message() const {
+  // @@protoc_insertion_point(field_get:tecmfs.BlockResponse.message)
+  return _internal_message();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void BlockResponse::set_message(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.message_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:tecmfs.BlockResponse.message)
+}
+inline std::string* BlockResponse::mutable_message() {
+  std::string* _s = _internal_mutable_message();
+  // @@protoc_insertion_point(field_mutable:tecmfs.BlockResponse.message)
+  return _s;
+}
+inline const std::string& BlockResponse::_internal_message() const {
+  return _impl_.message_.Get();
+}
+inline void BlockResponse::_internal_set_message(const std::string& value) {
+  
+  _impl_.message_.Set(value, GetArenaForAllocation());
+}
+inline std::string* BlockResponse::_internal_mutable_message() {
+  
+  return _impl_.message_.Mutable(GetArenaForAllocation());
+}
+inline std::string* BlockResponse::release_message() {
+  // @@protoc_insertion_point(field_release:tecmfs.BlockResponse.message)
+  return _impl_.message_.Release();
+}
+inline void BlockResponse::set_allocated_message(std::string* message) {
+  if (message != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.message_.SetAllocated(message, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.message_.IsDefault()) {
+    _impl_.message_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:tecmfs.BlockResponse.message)
+}
+
+// -------------------------------------------------------------------
+
+// BlockIndex
+
+// int32 index = 1;
+inline void BlockIndex::clear_index() {
+  _impl_.index_ = 0;
+}
+inline int32_t BlockIndex::_internal_index() const {
+  return _impl_.index_;
+}
+inline int32_t BlockIndex::index() const {
+  // @@protoc_insertion_point(field_get:tecmfs.BlockIndex.index)
+  return _internal_index();
+}
+inline void BlockIndex::_internal_set_index(int32_t value) {
+  
+  _impl_.index_ = value;
+}
+inline void BlockIndex::set_index(int32_t value) {
+  _internal_set_index(value);
+  // @@protoc_insertion_point(field_set:tecmfs.BlockIndex.index)
+}
+
+// -------------------------------------------------------------------
+
+// BlockData
+
+// bytes data = 1;
+inline void BlockData::clear_data() {
+  _impl_.data_.ClearToEmpty();
+}
+inline const std::string& BlockData::data() const {
+  // @@protoc_insertion_point(field_get:tecmfs.BlockData.data)
+  return _internal_data();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void BlockData::set_data(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.data_.SetBytes(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:tecmfs.BlockData.data)
+}
+inline std::string* BlockData::mutable_data() {
+  std::string* _s = _internal_mutable_data();
+  // @@protoc_insertion_point(field_mutable:tecmfs.BlockData.data)
+  return _s;
+}
+inline const std::string& BlockData::_internal_data() const {
+  return _impl_.data_.Get();
+}
+inline void BlockData::_internal_set_data(const std::string& value) {
+  
+  _impl_.data_.Set(value, GetArenaForAllocation());
+}
+inline std::string* BlockData::_internal_mutable_data() {
+  
+  return _impl_.data_.Mutable(GetArenaForAllocation());
+}
+inline std::string* BlockData::release_data() {
+  // @@protoc_insertion_point(field_release:tecmfs.BlockData.data)
+  return _impl_.data_.Release();
+}
+inline void BlockData::set_allocated_data(std::string* data) {
+  if (data != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.data_.SetAllocated(data, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.data_.IsDefault()) {
+    _impl_.data_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:tecmfs.BlockData.data)
+}
+
+// bool success = 2;
+inline void BlockData::clear_success() {
+  _impl_.success_ = false;
+}
+inline bool BlockData::_internal_success() const {
+  return _impl_.success_;
+}
+inline bool BlockData::success() const {
+  // @@protoc_insertion_point(field_get:tecmfs.BlockData.success)
+  return _internal_success();
+}
+inline void BlockData::_internal_set_success(bool value) {
+  
+  _impl_.success_ = value;
+}
+inline void BlockData::set_success(bool value) {
+  _internal_set_success(value);
+  // @@protoc_insertion_point(field_set:tecmfs.BlockData.success)
+}
+
+// string message = 3;
+inline void BlockData::clear_message() {
+  _impl_.message_.ClearToEmpty();
+}
+inline const std::string& BlockData::message() const {
+  // @@protoc_insertion_point(field_get:tecmfs.BlockData.message)
+  return _internal_message();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void BlockData::set_message(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.message_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:tecmfs.BlockData.message)
+}
+inline std::string* BlockData::mutable_message() {
+  std::string* _s = _internal_mutable_message();
+  // @@protoc_insertion_point(field_mutable:tecmfs.BlockData.message)
+  return _s;
+}
+inline const std::string& BlockData::_internal_message() const {
+  return _impl_.message_.Get();
+}
+inline void BlockData::_internal_set_message(const std::string& value) {
+  
+  _impl_.message_.Set(value, GetArenaForAllocation());
+}
+inline std::string* BlockData::_internal_mutable_message() {
+  
+  return _impl_.message_.Mutable(GetArenaForAllocation());
+}
+inline std::string* BlockData::release_message() {
+  // @@protoc_insertion_point(field_release:tecmfs.BlockData.message)
+  return _impl_.message_.Release();
+}
+inline void BlockData::set_allocated_message(std::string* message) {
+  if (message != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.message_.SetAllocated(message, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.message_.IsDefault()) {
+    _impl_.message_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:tecmfs.BlockData.message)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 

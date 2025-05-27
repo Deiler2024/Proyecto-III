@@ -4,6 +4,8 @@ package tecmfs;
 
 service DiskService {
   rpc Ping (PingRequest) returns (PingResponse);
+  rpc WriteBlock (BlockRequest) returns (BlockResponse);
+  rpc ReadBlock (BlockIndex) returns (BlockData);
 }
 
 message PingRequest {
@@ -12,4 +14,24 @@ message PingRequest {
 
 message PingResponse {
   string message = 1;
+}
+
+message BlockRequest {
+  int32 index = 1;
+  bytes data = 2;
+}
+
+message BlockResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message BlockIndex {
+  int32 index = 1;
+}
+
+message BlockData {
+  bytes data = 1;
+  bool success = 2;
+  string message = 3;
 }

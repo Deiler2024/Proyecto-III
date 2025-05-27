@@ -23,6 +23,8 @@ namespace tecmfs {
 
 static const char* DiskService_method_names[] = {
   "/tecmfs.DiskService/Ping",
+  "/tecmfs.DiskService/WriteBlock",
+  "/tecmfs.DiskService/ReadBlock",
 };
 
 std::unique_ptr< DiskService::Stub> DiskService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -33,6 +35,8 @@ std::unique_ptr< DiskService::Stub> DiskService::NewStub(const std::shared_ptr< 
 
 DiskService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
   : channel_(channel), rpcmethod_Ping_(DiskService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_WriteBlock_(DiskService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ReadBlock_(DiskService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status DiskService::Stub::Ping(::grpc::ClientContext* context, const ::tecmfs::PingRequest& request, ::tecmfs::PingResponse* response) {
@@ -58,6 +62,52 @@ void DiskService::Stub::async::Ping(::grpc::ClientContext* context, const ::tecm
   return result;
 }
 
+::grpc::Status DiskService::Stub::WriteBlock(::grpc::ClientContext* context, const ::tecmfs::BlockRequest& request, ::tecmfs::BlockResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::tecmfs::BlockRequest, ::tecmfs::BlockResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_WriteBlock_, context, request, response);
+}
+
+void DiskService::Stub::async::WriteBlock(::grpc::ClientContext* context, const ::tecmfs::BlockRequest* request, ::tecmfs::BlockResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::tecmfs::BlockRequest, ::tecmfs::BlockResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_WriteBlock_, context, request, response, std::move(f));
+}
+
+void DiskService::Stub::async::WriteBlock(::grpc::ClientContext* context, const ::tecmfs::BlockRequest* request, ::tecmfs::BlockResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_WriteBlock_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::tecmfs::BlockResponse>* DiskService::Stub::PrepareAsyncWriteBlockRaw(::grpc::ClientContext* context, const ::tecmfs::BlockRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::tecmfs::BlockResponse, ::tecmfs::BlockRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_WriteBlock_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::tecmfs::BlockResponse>* DiskService::Stub::AsyncWriteBlockRaw(::grpc::ClientContext* context, const ::tecmfs::BlockRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncWriteBlockRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status DiskService::Stub::ReadBlock(::grpc::ClientContext* context, const ::tecmfs::BlockIndex& request, ::tecmfs::BlockData* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::tecmfs::BlockIndex, ::tecmfs::BlockData, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ReadBlock_, context, request, response);
+}
+
+void DiskService::Stub::async::ReadBlock(::grpc::ClientContext* context, const ::tecmfs::BlockIndex* request, ::tecmfs::BlockData* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::tecmfs::BlockIndex, ::tecmfs::BlockData, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ReadBlock_, context, request, response, std::move(f));
+}
+
+void DiskService::Stub::async::ReadBlock(::grpc::ClientContext* context, const ::tecmfs::BlockIndex* request, ::tecmfs::BlockData* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ReadBlock_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::tecmfs::BlockData>* DiskService::Stub::PrepareAsyncReadBlockRaw(::grpc::ClientContext* context, const ::tecmfs::BlockIndex& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::tecmfs::BlockData, ::tecmfs::BlockIndex, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_ReadBlock_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::tecmfs::BlockData>* DiskService::Stub::AsyncReadBlockRaw(::grpc::ClientContext* context, const ::tecmfs::BlockIndex& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncReadBlockRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 DiskService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       DiskService_method_names[0],
@@ -69,12 +119,46 @@ DiskService::Service::Service() {
              ::tecmfs::PingResponse* resp) {
                return service->Ping(ctx, req, resp);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      DiskService_method_names[1],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< DiskService::Service, ::tecmfs::BlockRequest, ::tecmfs::BlockResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](DiskService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::tecmfs::BlockRequest* req,
+             ::tecmfs::BlockResponse* resp) {
+               return service->WriteBlock(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      DiskService_method_names[2],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< DiskService::Service, ::tecmfs::BlockIndex, ::tecmfs::BlockData, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](DiskService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::tecmfs::BlockIndex* req,
+             ::tecmfs::BlockData* resp) {
+               return service->ReadBlock(ctx, req, resp);
+             }, this)));
 }
 
 DiskService::Service::~Service() {
 }
 
 ::grpc::Status DiskService::Service::Ping(::grpc::ServerContext* context, const ::tecmfs::PingRequest* request, ::tecmfs::PingResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status DiskService::Service::WriteBlock(::grpc::ServerContext* context, const ::tecmfs::BlockRequest* request, ::tecmfs::BlockResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status DiskService::Service::ReadBlock(::grpc::ServerContext* context, const ::tecmfs::BlockIndex* request, ::tecmfs::BlockData* response) {
   (void) context;
   (void) request;
   (void) response;
