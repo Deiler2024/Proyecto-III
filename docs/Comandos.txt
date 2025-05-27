@@ -1,1 +1,20 @@
 sudo apt install cmake libxml2-dev protobuf-compiler-grpc libgrpc++-dev       #instalar
+
+
+(
+rm -rf build
+mkdir build
+cd build 
+cmake ..
+make
+)                comandos para 
+
+
+
+
+ejecutar servidor (esatndo en la raiz del proyecto):
+./build/disk_node
+
+
+ejecutar controller (estando en la raiz):
+./build/controller
