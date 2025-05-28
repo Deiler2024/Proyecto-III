@@ -14,6 +14,9 @@ using tecmfs::PingRequest;
 using tecmfs::PingResponse;
 using tecmfs::BlockRequest;
 using tecmfs::BlockResponse;
+using tecmfs::BlockIndex;
+using tecmfs::BlockData;
+
 
 class ControllerClient {
 public:
@@ -39,7 +42,7 @@ public:
     void WriteTestBlock() {
         BlockRequest request;
         request.set_index(0);
-        request.set_data("Hola, disco!");
+        request.set_data("Hola, disco!, todo bien?");
 
         BlockResponse response;
         ClientContext context;
@@ -53,6 +56,27 @@ public:
             std::cerr << "Error RPC WriteBlock: " << status.error_message() << std::endl;
         }
     }
+    void ReadTestBlock() {
+        BlockIndex request;
+        request.set_index(0);  // Leeremos el bloque 0
+    
+        BlockData response;
+        ClientContext context;
+    
+        Status status = stub_->ReadBlock(&context, request, &response);
+    
+        if (status.ok()) {
+            if (response.success()) {
+                std::cout << "ReadBlock: ✅ OK - " << response.message() << std::endl;
+                std::cout << "Contenido leído: " << response.data() << std::endl;
+            } else {
+                std::cout << "ReadBlock: ❌ Falló - " << response.message() << std::endl;
+            }
+        } else {
+            std::cerr << "Error RPC ReadBlock: " << status.error_message() << std::endl;
+        }
+    }
+    
 
 private:
     std::unique_ptr<DiskService::Stub> stub_;
@@ -64,6 +88,7 @@ int main() {
 
     client.SendPing();
     client.WriteTestBlock();
+    client.ReadTestBlock();  // <- aquí
 
     return 0;
 }
