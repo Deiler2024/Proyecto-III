@@ -127,6 +127,33 @@ class DiskServiceImpl final : public DiskService::Service {
     
             return Status::OK;
         }
+        Status ReadBlock(ServerContext* context, const BlockIndex* request, BlockData* response) override {
+            int index = request->index();
+        
+            if (index < 0 || index >= config_.diskSize) {
+                response->set_success(false);
+                response->set_message("Índice de bloque fuera de rango");
+                return Status::OK;
+            }
+        
+            std::string filename = config_.path + "/block_" + std::to_string(index) + ".bin";
+            std::ifstream inFile(filename, std::ios::binary);
+            if (!inFile) {
+                response->set_success(false);
+                response->set_message("No se pudo abrir el archivo para lectura");
+                return Status::OK;
+            }
+        
+            std::string data((std::istreambuf_iterator<char>(inFile)), std::istreambuf_iterator<char>());
+            response->set_data(data);
+            response->set_success(true);
+            response->set_message("Bloque leído correctamente");
+        
+            std::cout << "Bloque " << index << " leído (" << data.size() << " bytes)\n";
+        
+            return Status::OK;
+        }
+        
     
     private:
         DiskConfig config_;

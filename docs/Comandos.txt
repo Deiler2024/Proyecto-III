@@ -7,7 +7,7 @@ mkdir build
 cd build 
 cmake ..
 make
-)                comandos para 
+)                comandos para recompilar
 
 
 
