@@ -160,10 +160,10 @@ class DiskServiceImpl final : public DiskService::Service {
     };
     
 
-    void RunServer() {
-        DiskConfig config = loadConfig("disk_node/config.xml");
+    void RunServer(const std::string& configPath) {
+        DiskConfig config = loadConfig(configPath);
     
-        std::cout << "Configuración cargada:\n";
+        std::cout << "Configuración cargada desde: " << configPath << "\n";
         std::cout << "IP: " << config.address << "\n";
         std::cout << "Puerto: " << config.port << "\n";
         std::cout << "Ruta: " << config.path << "\n";
@@ -184,8 +184,16 @@ class DiskServiceImpl final : public DiskService::Service {
         server->Wait();
     }
     
+    
 
-int main() {
-    RunServer();
+int main(int argc, char** argv) {
+    std::string configPath = "disk_node/config.xml";  // por defecto
+
+    if (argc >= 2) {
+        configPath = argv[1];
+    }
+
+    RunServer(configPath);
     return 0;
 }
+
