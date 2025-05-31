@@ -21,8 +21,20 @@ using tecmfs::BlockData;
 
 class ControllerClient {
 public:
-    ControllerClient(std::shared_ptr<Channel> channel)
-        : stub_(DiskService::NewStub(channel)) {}
+ControllerClient() {
+    std::vector<std::string> ips = {
+        "127.0.0.1:50051",  // Nodo 0
+        "127.0.0.2:50052",  // Nodo 1
+        "127.0.0.3:50053",  // Nodo 2
+        "127.0.0.4:50054"   // Nodo 3
+    };
+
+    for (const auto& ip : ips) {
+        auto channel = grpc::CreateChannel(ip, grpc::InsecureChannelCredentials());
+        stubs_.push_back(DiskService::NewStub(channel));
+    }
+}
+
 
     void SendPing() {
         PingRequest request;
@@ -31,7 +43,8 @@ public:
         PingResponse response;
         ClientContext context;
 
-        Status status = stub_->Ping(&context, request, &response);
+        Status status = stubs_[0]->Ping(&context, request, &response);
+
 
         if (status.ok()) {
             std::cout << "Ping Response: " << response.message() << std::endl;
@@ -48,7 +61,8 @@ public:
         BlockResponse response;
         ClientContext context;
 
-        Status status = stub_->WriteBlock(&context, request, &response);
+        Status status = stubs_[0]->WriteBlock(&context, request, &response);
+
 
         if (status.ok()) {
             std::cout << "WriteBlock: " << (response.success() ? "✅ OK" : "❌ Falló")
@@ -65,7 +79,9 @@ public:
         BlockData response;
         ClientContext context;
 
-        Status status = stub_->ReadBlock(&context, request, &response);
+        Status status = stubs_[0]->ReadBlock(&context, request, &response);
+
+
 
         if (status.ok()) {
             if (response.success()) {
@@ -103,7 +119,7 @@ public:
             BlockResponse response;
             ClientContext context;
 
-            Status status = stub_->WriteBlock(&context, request, &response);
+            Status status = stubs_[0]->WriteBlock(&context, request, &response);
             if (status.ok() && response.success()) {
                 std::cout << "Bloque " << index << " escrito ✅ (" << bytesRead << " bytes)" << std::endl;
             } else {
@@ -137,7 +153,7 @@ public:
             BlockData response;
             ClientContext context;
     
-            Status status = stub_->ReadBlock(&context, request, &response);
+            Status status = stubs_[0]->ReadBlock(&context, request, &response);
             if (!status.ok() || !response.success()) {
                 std::cerr << "Error al leer el bloque " << index << ": "
                           << (status.ok() ? response.message() : status.error_message()) << std::endl;
@@ -160,15 +176,93 @@ public:
         outFile.close();
         std::cout << "Archivo reconstruido como: " << outputPath << std::endl;
     }
+    void WriteFileRAID5(const std::string& filepath) {
+        std::ifstream file(filepath, std::ios::binary);
+        if (!file) {
+            std::cerr << "No se pudo abrir el archivo: " << filepath << std::endl;
+            return;
+        }
+    
+        const int blockSize = 4096;
+        int globalIndex = 0;  // Para asignar índices únicos a todos los bloques
+        int group = 0;        // Grupo RAID
+    
+        while (!file.eof()) {
+            std::vector<std::string> dataBlocks;
+            std::vector<int> validSizes;
+    
+            // Leer hasta 3 bloques de datos
+            for (int i = 0; i < 3; ++i) {
+                std::vector<char> buffer(blockSize, 0);
+                file.read(buffer.data(), blockSize);
+                std::streamsize bytesRead = file.gcount();
+    
+                if (bytesRead <= 0) break;
+    
+                dataBlocks.emplace_back(buffer.data(), bytesRead);
+                validSizes.push_back((int)bytesRead);
+            }
+    
+            if (dataBlocks.empty()) break;
+    
+            // Calcular paridad XOR entre los bloques
+            std::string parity(blockSize, 0);
+            for (int i = 0; i < dataBlocks.size(); ++i) {
+                for (int j = 0; j < validSizes[i]; ++j) {
+                    parity[j] ^= dataBlocks[i][j];
+                }
+            }
+    
+            // Determinar posición rotativa de la paridad
+            int parityNode = group % 4;
+            int dataNode = 0;
+    
+            for (int i = 0; i < 4; ++i) {
+                int node = (parityNode + i) % 4;
+    
+                BlockRequest request;
+                request.set_index(globalIndex++);
+    
+                if (i < dataBlocks.size()) {
+                    request.set_data(dataBlocks[dataNode++]);
+                } else if (i == 3 || dataBlocks.size() < 3) {
+                    // Colocar la paridad en el slot correspondiente
+                    request.set_data(parity);
+                } else {
+                    continue;
+                }
+    
+                BlockResponse response;
+                ClientContext context;
+    
+                Status status = stubs_[node]->WriteBlock(&context, request, &response);
+                if (status.ok() && response.success()) {
+                    std::cout << "[Nodo " << node << "] Bloque " << request.index()
+                              << " escrito ✅ (" << request.data().size() << " bytes)" << std::endl;
+                } else {
+                    std::cerr << "[Nodo " << node << "] Error al escribir bloque "
+                              << request.index() << ": "
+                              << (status.ok() ? response.message() : status.error_message()) << std::endl;
+                }
+            }
+    
+            group++;
+        }
+    
+        file.close();
+        std::cout << "Archivo enviado en bloques RAID 5 con éxito." << std::endl;
+    }
+    
     
 
 private:
-    std::unique_ptr<DiskService::Stub> stub_;
+std::vector<std::unique_ptr<DiskService::Stub>> stubs_;
+
 };
 
 int main() {
-    auto channel = grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials());
-    ControllerClient client(channel);
+    ControllerClient client;
+
 
     client.SendPing();
     client.WriteTestBlock();
@@ -176,6 +270,8 @@ int main() {
 
     client.WriteFile("proyecto.pdf");
     client.ReadFile("reconstruido.pdf", 0, 100);
+    client.WriteFileRAID5("proyecto.pdf");
+
 
     return 0;
 }
