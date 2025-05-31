@@ -176,6 +176,50 @@ ControllerClient() {
         outFile.close();
         std::cout << "Archivo reconstruido como: " << outputPath << std::endl;
     }
+    void ReadFileRAID5(const std::string& outputPath, int totalBlocks) {
+        std::ofstream outFile(outputPath, std::ios::binary);
+        if (!outFile) {
+            std::cerr << "No se pudo crear el archivo: " << outputPath << std::endl;
+            return;
+        }
+    
+        const int blockSize = 4096;
+    
+        for (int i = 0; i < totalBlocks; ++i) {
+            int group = i / 4;
+            int offset = i % 4;
+            int parityNode = group % 4;
+            int node = (parityNode + offset) % 4;
+    
+            BlockIndex request;
+            request.set_index(i);
+    
+            BlockData response;
+            ClientContext context;
+    
+            Status status = stubs_[node]->ReadBlock(&context, request, &response);
+    
+            if (status.ok() && response.success()) {
+                const std::string& data = response.data();
+                outFile.write(data.data(), data.size());
+                std::cout << "Bloque " << i << " leído desde Nodo " << node
+                          << " (" << data.size() << " bytes)" << std::endl;
+    
+                if (data.size() < blockSize) {
+                    std::cout << "Último bloque alcanzado." << std::endl;
+                    break;
+                }
+            } else {
+                std::cerr << "❌ Error al leer bloque " << i << " del Nodo " << node
+                          << ": " << (status.ok() ? response.message() : status.error_message()) << std::endl;
+                break;
+            }
+        }
+    
+        outFile.close();
+        std::cout << "Archivo RAID reconstruido como: " << outputPath << std::endl;
+    }
+    
     void WriteFileRAID5(const std::string& filepath) {
         std::ifstream file(filepath, std::ios::binary);
         if (!file) {
@@ -269,7 +313,8 @@ int main() {
     client.ReadTestBlock();
 
     client.WriteFile("proyecto.pdf");
-    client.ReadFile("reconstruido.pdf", 0, 100);
+    client.ReadFileRAID5("reconstruido_raid5.pdf", 48); // cambia 48 por el total real de bloques escritos
+
     client.WriteFileRAID5("proyecto.pdf");
 
 
