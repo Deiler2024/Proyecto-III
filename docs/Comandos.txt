@@ -18,3 +18,10 @@ ejecutar servidor (esatndo en la raiz del proyecto):
 
 ejecutar controller (estando en la raiz):
 ./build/controller
+
+
+
+./build/disk_node disk_node_1/config.xml
+./build/disk_node disk_node_2/config.xml
+./build/disk_node disk_node_3/config.xml
+./build/disk_node disk_node_4/config.xml
