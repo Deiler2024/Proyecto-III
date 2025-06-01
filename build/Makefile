@@ -220,6 +220,30 @@ controller/controller_client.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/controller.dir/build.make CMakeFiles/controller.dir/controller/controller_client.cpp.s
 .PHONY : controller/controller_client.cpp.s
 
+controller/raid/RAID5Manager.o: controller/raid/RAID5Manager.cpp.o
+.PHONY : controller/raid/RAID5Manager.o
+
+# target to build an object file
+controller/raid/RAID5Manager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/controller.dir/build.make CMakeFiles/controller.dir/controller/raid/RAID5Manager.cpp.o
+.PHONY : controller/raid/RAID5Manager.cpp.o
+
+controller/raid/RAID5Manager.i: controller/raid/RAID5Manager.cpp.i
+.PHONY : controller/raid/RAID5Manager.i
+
+# target to preprocess a source file
+controller/raid/RAID5Manager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/controller.dir/build.make CMakeFiles/controller.dir/controller/raid/RAID5Manager.cpp.i
+.PHONY : controller/raid/RAID5Manager.cpp.i
+
+controller/raid/RAID5Manager.s: controller/raid/RAID5Manager.cpp.s
+.PHONY : controller/raid/RAID5Manager.s
+
+# target to generate assembly for a file
+controller/raid/RAID5Manager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/controller.dir/build.make CMakeFiles/controller.dir/controller/raid/RAID5Manager.cpp.s
+.PHONY : controller/raid/RAID5Manager.cpp.s
+
 disk_node/disk_server.o: disk_node/disk_server.cpp.o
 .PHONY : disk_node/disk_server.o
 
@@ -263,6 +287,9 @@ help:
 	@echo "... controller/controller_client.o"
 	@echo "... controller/controller_client.i"
 	@echo "... controller/controller_client.s"
+	@echo "... controller/raid/RAID5Manager.o"
+	@echo "... controller/raid/RAID5Manager.i"
+	@echo "... controller/raid/RAID5Manager.s"
 	@echo "... disk_node/disk_server.o"
 	@echo "... disk_node/disk_server.i"
 	@echo "... disk_node/disk_server.s"
