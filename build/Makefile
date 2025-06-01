@@ -196,29 +196,29 @@ common/generated/tecmfs.pb.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/controller.dir/build.make CMakeFiles/controller.dir/common/generated/tecmfs.pb.cc.s
 .PHONY : common/generated/tecmfs.pb.cc.s
 
-controller/controller_client.o: controller/controller_client.cpp.o
-.PHONY : controller/controller_client.o
+controller/client/ControllerClient.o: controller/client/ControllerClient.cpp.o
+.PHONY : controller/client/ControllerClient.o
 
 # target to build an object file
-controller/controller_client.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/controller.dir/build.make CMakeFiles/controller.dir/controller/controller_client.cpp.o
-.PHONY : controller/controller_client.cpp.o
+controller/client/ControllerClient.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/controller.dir/build.make CMakeFiles/controller.dir/controller/client/ControllerClient.cpp.o
+.PHONY : controller/client/ControllerClient.cpp.o
 
-controller/controller_client.i: controller/controller_client.cpp.i
-.PHONY : controller/controller_client.i
+controller/client/ControllerClient.i: controller/client/ControllerClient.cpp.i
+.PHONY : controller/client/ControllerClient.i
 
 # target to preprocess a source file
-controller/controller_client.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/controller.dir/build.make CMakeFiles/controller.dir/controller/controller_client.cpp.i
-.PHONY : controller/controller_client.cpp.i
+controller/client/ControllerClient.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/controller.dir/build.make CMakeFiles/controller.dir/controller/client/ControllerClient.cpp.i
+.PHONY : controller/client/ControllerClient.cpp.i
 
-controller/controller_client.s: controller/controller_client.cpp.s
-.PHONY : controller/controller_client.s
+controller/client/ControllerClient.s: controller/client/ControllerClient.cpp.s
+.PHONY : controller/client/ControllerClient.s
 
 # target to generate assembly for a file
-controller/controller_client.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/controller.dir/build.make CMakeFiles/controller.dir/controller/controller_client.cpp.s
-.PHONY : controller/controller_client.cpp.s
+controller/client/ControllerClient.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/controller.dir/build.make CMakeFiles/controller.dir/controller/client/ControllerClient.cpp.s
+.PHONY : controller/client/ControllerClient.cpp.s
 
 controller/raid/RAID5Manager.o: controller/raid/RAID5Manager.cpp.o
 .PHONY : controller/raid/RAID5Manager.o
@@ -244,6 +244,30 @@ controller/raid/RAID5Manager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/controller.dir/build.make CMakeFiles/controller.dir/controller/raid/RAID5Manager.cpp.s
 .PHONY : controller/raid/RAID5Manager.cpp.s
 
+controller/utils/Logger.o: controller/utils/Logger.cpp.o
+.PHONY : controller/utils/Logger.o
+
+# target to build an object file
+controller/utils/Logger.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/controller.dir/build.make CMakeFiles/controller.dir/controller/utils/Logger.cpp.o
+.PHONY : controller/utils/Logger.cpp.o
+
+controller/utils/Logger.i: controller/utils/Logger.cpp.i
+.PHONY : controller/utils/Logger.i
+
+# target to preprocess a source file
+controller/utils/Logger.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/controller.dir/build.make CMakeFiles/controller.dir/controller/utils/Logger.cpp.i
+.PHONY : controller/utils/Logger.cpp.i
+
+controller/utils/Logger.s: controller/utils/Logger.cpp.s
+.PHONY : controller/utils/Logger.s
+
+# target to generate assembly for a file
+controller/utils/Logger.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/controller.dir/build.make CMakeFiles/controller.dir/controller/utils/Logger.cpp.s
+.PHONY : controller/utils/Logger.cpp.s
+
 disk_node/disk_server.o: disk_node/disk_server.cpp.o
 .PHONY : disk_node/disk_server.o
 
@@ -268,6 +292,30 @@ disk_node/disk_server.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/disk_node.dir/build.make CMakeFiles/disk_node.dir/disk_node/disk_server.cpp.s
 .PHONY : disk_node/disk_server.cpp.s
 
+main.o: main.cpp.o
+.PHONY : main.o
+
+# target to build an object file
+main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/controller.dir/build.make CMakeFiles/controller.dir/main.cpp.o
+.PHONY : main.cpp.o
+
+main.i: main.cpp.i
+.PHONY : main.i
+
+# target to preprocess a source file
+main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/controller.dir/build.make CMakeFiles/controller.dir/main.cpp.i
+.PHONY : main.cpp.i
+
+main.s: main.cpp.s
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/controller.dir/build.make CMakeFiles/controller.dir/main.cpp.s
+.PHONY : main.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -284,15 +332,21 @@ help:
 	@echo "... common/generated/tecmfs.pb.o"
 	@echo "... common/generated/tecmfs.pb.i"
 	@echo "... common/generated/tecmfs.pb.s"
-	@echo "... controller/controller_client.o"
-	@echo "... controller/controller_client.i"
-	@echo "... controller/controller_client.s"
+	@echo "... controller/client/ControllerClient.o"
+	@echo "... controller/client/ControllerClient.i"
+	@echo "... controller/client/ControllerClient.s"
 	@echo "... controller/raid/RAID5Manager.o"
 	@echo "... controller/raid/RAID5Manager.i"
 	@echo "... controller/raid/RAID5Manager.s"
+	@echo "... controller/utils/Logger.o"
+	@echo "... controller/utils/Logger.i"
+	@echo "... controller/utils/Logger.s"
 	@echo "... disk_node/disk_server.o"
 	@echo "... disk_node/disk_server.i"
 	@echo "... disk_node/disk_server.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 

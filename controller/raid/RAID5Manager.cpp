@@ -1,8 +1,8 @@
 #include "RAID5Manager.h"
-#include <grpcpp/grpcpp.h>
 #include <fstream>
-#include <iostream>
 #include <vector>
+#include <iostream>
+#include "../../common/generated/tecmfs.grpc.pb.h"
 
 using grpc::ClientContext;
 using grpc::Status;
@@ -11,20 +11,10 @@ using tecmfs::BlockResponse;
 using tecmfs::BlockIndex;
 using tecmfs::BlockData;
 
-RAID5Manager::RAID5Manager() {
-    std::vector<std::string> addresses = {
-        "127.0.0.1:50051",
-        "127.0.0.2:50052",
-        "127.0.0.3:50053",
-        "127.0.0.4:50054"
-    };
+RAID5Manager::RAID5Manager(ControllerClient& controller)
+    : controller_(controller) {}
 
-    for (int i = 0; i < 4; ++i) {
-        stubs_[i] = tecmfs::DiskService::NewStub(grpc::CreateChannel(addresses[i], grpc::InsecureChannelCredentials()));
-    }
-}
-
-int RAID5Manager::WriteFileRAID5(const std::string& filepath) {
+int RAID5Manager::WriteFile(const std::string& filepath) {
     std::ifstream file(filepath, std::ios::binary);
     if (!file) {
         std::cerr << "No se pudo abrir el archivo: " << filepath << std::endl;
@@ -79,7 +69,8 @@ int RAID5Manager::WriteFileRAID5(const std::string& filepath) {
 
             BlockResponse response;
             ClientContext context;
-            Status status = stubs_[node]->WriteBlock(&context, request, &response);
+            Status status = controller_.GetStub(node)->WriteBlock(&context, request, &response);
+
             if (status.ok() && response.success()) {
                 std::cout << "[Nodo " << node << "] Bloque " << request.index()
                           << " escrito ✅ (" << request.data().size() << " bytes)" << std::endl;
@@ -94,11 +85,10 @@ int RAID5Manager::WriteFileRAID5(const std::string& filepath) {
     }
 
     file.close();
-    std::cout << "Archivo enviado en bloques RAID 5 con éxito." << std::endl;
     return writtenDataBlocks;
 }
 
-void RAID5Manager::ReadFileRAID5(const std::string& outputPath, int totalDataBlocks) {
+void RAID5Manager::ReadFile(const std::string& outputPath, int totalDataBlocks) {
     std::ofstream outFile(outputPath, std::ios::binary);
     if (!outFile) {
         std::cerr << "No se pudo crear el archivo: " << outputPath << std::endl;
@@ -117,7 +107,7 @@ void RAID5Manager::ReadFileRAID5(const std::string& outputPath, int totalDataBlo
             int node = (parityNode + offset) % 4;
 
             if (offset == 0) {
-                globalIndex++;
+                globalIndex++; // Saltear bloque de paridad
                 continue;
             }
 
@@ -126,7 +116,8 @@ void RAID5Manager::ReadFileRAID5(const std::string& outputPath, int totalDataBlo
 
             BlockData response;
             ClientContext context;
-            Status status = stubs_[node]->ReadBlock(&context, request, &response);
+
+            Status status = controller_.GetStub(node)->ReadBlock(&context, request, &response);
 
             if (status.ok() && response.success()) {
                 const std::string& data = response.data();
