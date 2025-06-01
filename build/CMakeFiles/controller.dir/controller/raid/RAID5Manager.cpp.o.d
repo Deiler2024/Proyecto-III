@@ -475,6 +475,7 @@ CMakeFiles/controller.dir/controller/raid/RAID5Manager.cpp.o: \
  /usr/local/include/grpcpp/support/proto_buffer_reader.h \
  /usr/local/include/grpcpp/support/proto_buffer_writer.h \
  /usr/local/include/grpcpp/support/stub_options.h \
+ /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/controller/raid/../client/ControllerClient.h \
  /usr/local/include/grpcpp/grpcpp.h /usr/local/include/grpcpp/channel.h \
  /usr/local/include/grpcpp/create_channel.h \
  /usr/local/include/grpcpp/security/credentials.h \
@@ -508,8 +509,9 @@ CMakeFiles/controller.dir/controller/raid/RAID5Manager.cpp.o: \
  /usr/local/include/grpcpp/impl/server_builder_plugin.h \
  /usr/local/include/grpcpp/security/authorization_policy_provider.h \
  /usr/local/include/grpcpp/server_posix.h \
- /usr/local/include/grpcpp/version_info.h /usr/include/c++/13/fstream \
- /usr/include/c++/13/bits/codecvt.h \
+ /usr/local/include/grpcpp/version_info.h \
+ /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/controller/raid/../client/../../common/generated/tecmfs.grpc.pb.h \
+ /usr/include/c++/13/fstream /usr/include/c++/13/bits/codecvt.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
  /usr/include/c++/13/bits/fstream.tcc

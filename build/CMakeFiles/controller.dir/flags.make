@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DCARES_STATICLIB
 
-CXX_INCLUDES = -I/usr/include/libxml2 -I/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/common/generated -I/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/controller
+CXX_INCLUDES = -I/usr/include/libxml2 -I/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/common/generated -I/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/controller -I/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/controller/client -I/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/controller/raid -I/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/controller/utils
 
 CXX_FLAGS = -std=gnu++17
 
