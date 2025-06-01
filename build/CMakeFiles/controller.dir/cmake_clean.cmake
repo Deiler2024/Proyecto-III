@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/controller.dir/common/generated/tecmfs.pb.cc.o.d"
   "CMakeFiles/controller.dir/controller/controller_client.cpp.o"
   "CMakeFiles/controller.dir/controller/controller_client.cpp.o.d"
+  "CMakeFiles/controller.dir/controller/raid/RAID5Manager.cpp.o"
+  "CMakeFiles/controller.dir/controller/raid/RAID5Manager.cpp.o.d"
   "controller"
   "controller.pdb"
 )

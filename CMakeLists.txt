@@ -12,6 +12,7 @@ include_directories(
     ${Protobuf_INCLUDE_DIRS}
     ${LIBXML2_INCLUDE_DIR}  # ← Agregado para libxml2
     ${CMAKE_CURRENT_SOURCE_DIR}/common/generated
+    ${CMAKE_CURRENT_SOURCE_DIR}/controller  # ← Agregar para encontrar RAID5Manager.h
 )
 
 # Archivos generados por Protobuf/gRPC
@@ -39,6 +40,7 @@ target_link_libraries(disk_node
 # Controller
 add_executable(controller
     controller/controller_client.cpp
+    controller/raid/RAID5Manager.cpp  # ← Agregar el nuevo archivo de implementación
     ${PROTO_SRCS}
 )
 target_link_libraries(controller
