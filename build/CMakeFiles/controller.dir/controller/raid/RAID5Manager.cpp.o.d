@@ -511,6 +511,7 @@ CMakeFiles/controller.dir/controller/raid/RAID5Manager.cpp.o: \
  /usr/local/include/grpcpp/server_posix.h \
  /usr/local/include/grpcpp/version_info.h \
  /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/controller/raid/../client/../../common/generated/tecmfs.grpc.pb.h \
+ /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/controller/raid/../utils/MetadataManager.h \
  /usr/include/c++/13/fstream /usr/include/c++/13/bits/codecvt.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \

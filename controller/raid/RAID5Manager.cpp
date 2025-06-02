@@ -1,4 +1,5 @@
 #include "RAID5Manager.h"
+#include "../utils/MetadataManager.h"
 #include <fstream>
 #include <vector>
 #include <iostream>
@@ -14,16 +15,17 @@ using tecmfs::BlockData;
 RAID5Manager::RAID5Manager(ControllerClient& controller)
     : controller_(controller) {}
 
-int RAID5Manager::WriteFile(const std::string& filepath) {
+std::pair<int, int> RAID5Manager::WriteFile(const std::string& filepath) {
     std::ifstream file(filepath, std::ios::binary);
     if (!file) {
         std::cerr << "No se pudo abrir el archivo: " << filepath << std::endl;
-        return 0;
+        return {0, 0};
     }
 
     const int blockSize = 4096;
     int globalIndex = 0;
     int writtenDataBlocks = 0;
+    int lastBlockSize = blockSize;
     int group = 0;
 
     while (!file.eof()) {
@@ -42,6 +44,8 @@ int RAID5Manager::WriteFile(const std::string& filepath) {
         }
 
         if (dataBlocks.empty()) break;
+
+        lastBlockSize = validSizes.back();  // Último tamaño válido leído
 
         std::string parity(blockSize, 0);
         for (int i = 0; i < dataBlocks.size(); ++i) {
@@ -85,10 +89,17 @@ int RAID5Manager::WriteFile(const std::string& filepath) {
     }
 
     file.close();
-    return writtenDataBlocks;
+
+    MetadataManager meta;
+    meta.SaveMetadata(writtenDataBlocks, lastBlockSize);
+
+    return {writtenDataBlocks, lastBlockSize};
 }
 
-void RAID5Manager::ReadFile(const std::string& outputPath, int totalDataBlocks) {
+void RAID5Manager::ReadFile(const std::string& outputPath, int /*unused*/) {
+    MetadataManager meta;
+    auto [totalDataBlocks, lastBlockSize] = meta.LoadMetadata();
+
     std::ofstream outFile(outputPath, std::ios::binary);
     if (!outFile) {
         std::cerr << "No se pudo crear el archivo: " << outputPath << std::endl;
@@ -107,7 +118,7 @@ void RAID5Manager::ReadFile(const std::string& outputPath, int totalDataBlocks) 
             int node = (parityNode + offset) % 4;
 
             if (offset == 0) {
-                globalIndex++; // Saltear bloque de paridad
+                globalIndex++;  // Saltar paridad
                 continue;
             }
 
@@ -116,24 +127,21 @@ void RAID5Manager::ReadFile(const std::string& outputPath, int totalDataBlocks) 
 
             BlockData response;
             ClientContext context;
-
             Status status = controller_.GetStub(node)->ReadBlock(&context, request, &response);
 
             if (status.ok() && response.success()) {
-                const std::string& data = response.data();
+                std::string data = response.data();
+                if (blocksRecovered == totalDataBlocks - 1) {
+                    data.resize(lastBlockSize);
+                }
+
                 outFile.write(data.data(), data.size());
                 std::cout << "Bloque de datos " << blocksRecovered
                           << " leído desde Nodo " << node << " (" << data.size() << " bytes)" << std::endl;
 
-                if (data.size() < blockSize) {
-                    std::cout << "Último bloque alcanzado." << std::endl;
-                    outFile.close();
-                    return;
-                }
-
                 blocksRecovered++;
             } else {
-                std::cerr << "❌ Error al leer bloque de datos " << blocksRecovered
+                std::cerr << "❌ Error al leer bloque " << blocksRecovered
                           << " del Nodo " << node << ": "
                           << (status.ok() ? response.message() : status.error_message()) << std::endl;
                 outFile.close();

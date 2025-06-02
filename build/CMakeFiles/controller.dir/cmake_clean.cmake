@@ -9,6 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/controller.dir/controller/raid/RAID5Manager.cpp.o.d"
   "CMakeFiles/controller.dir/controller/utils/Logger.cpp.o"
   "CMakeFiles/controller.dir/controller/utils/Logger.cpp.o.d"
+  "CMakeFiles/controller.dir/controller/utils/MetadataManager.cpp.o"
+  "CMakeFiles/controller.dir/controller/utils/MetadataManager.cpp.o.d"
   "CMakeFiles/controller.dir/main.cpp.o"
   "CMakeFiles/controller.dir/main.cpp.o.d"
   "controller"
