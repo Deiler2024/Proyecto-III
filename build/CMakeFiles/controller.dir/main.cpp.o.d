@@ -506,4 +506,5 @@ CMakeFiles/controller.dir/main.cpp.o: \
  /usr/local/include/grpcpp/support/stub_options.h \
  /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/./controller/raid/RAID5Manager.h \
  /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/./controller/raid/../../common/generated/tecmfs.grpc.pb.h \
- /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/./controller/utils/Logger.h
+ /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/./controller/utils/Logger.h \
+ /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/./controller/utils/MetadataManager.h

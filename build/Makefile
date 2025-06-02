@@ -268,6 +268,30 @@ controller/utils/Logger.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/controller.dir/build.make CMakeFiles/controller.dir/controller/utils/Logger.cpp.s
 .PHONY : controller/utils/Logger.cpp.s
 
+controller/utils/MetadataManager.o: controller/utils/MetadataManager.cpp.o
+.PHONY : controller/utils/MetadataManager.o
+
+# target to build an object file
+controller/utils/MetadataManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/controller.dir/build.make CMakeFiles/controller.dir/controller/utils/MetadataManager.cpp.o
+.PHONY : controller/utils/MetadataManager.cpp.o
+
+controller/utils/MetadataManager.i: controller/utils/MetadataManager.cpp.i
+.PHONY : controller/utils/MetadataManager.i
+
+# target to preprocess a source file
+controller/utils/MetadataManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/controller.dir/build.make CMakeFiles/controller.dir/controller/utils/MetadataManager.cpp.i
+.PHONY : controller/utils/MetadataManager.cpp.i
+
+controller/utils/MetadataManager.s: controller/utils/MetadataManager.cpp.s
+.PHONY : controller/utils/MetadataManager.s
+
+# target to generate assembly for a file
+controller/utils/MetadataManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/controller.dir/build.make CMakeFiles/controller.dir/controller/utils/MetadataManager.cpp.s
+.PHONY : controller/utils/MetadataManager.cpp.s
+
 disk_node/disk_server.o: disk_node/disk_server.cpp.o
 .PHONY : disk_node/disk_server.o
 
@@ -341,6 +365,9 @@ help:
 	@echo "... controller/utils/Logger.o"
 	@echo "... controller/utils/Logger.i"
 	@echo "... controller/utils/Logger.s"
+	@echo "... controller/utils/MetadataManager.o"
+	@echo "... controller/utils/MetadataManager.i"
+	@echo "... controller/utils/MetadataManager.s"
 	@echo "... disk_node/disk_server.o"
 	@echo "... disk_node/disk_server.i"
 	@echo "... disk_node/disk_server.s"

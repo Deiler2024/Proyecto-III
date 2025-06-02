@@ -13,6 +13,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/controller/client/ControllerClient.cpp" "CMakeFiles/controller.dir/controller/client/ControllerClient.cpp.o" "gcc" "CMakeFiles/controller.dir/controller/client/ControllerClient.cpp.o.d"
   "/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/controller/raid/RAID5Manager.cpp" "CMakeFiles/controller.dir/controller/raid/RAID5Manager.cpp.o" "gcc" "CMakeFiles/controller.dir/controller/raid/RAID5Manager.cpp.o.d"
   "/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/controller/utils/Logger.cpp" "CMakeFiles/controller.dir/controller/utils/Logger.cpp.o" "gcc" "CMakeFiles/controller.dir/controller/utils/Logger.cpp.o.d"
+  "/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/controller/utils/MetadataManager.cpp" "CMakeFiles/controller.dir/controller/utils/MetadataManager.cpp.o" "gcc" "CMakeFiles/controller.dir/controller/utils/MetadataManager.cpp.o.d"
   "/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/main.cpp" "CMakeFiles/controller.dir/main.cpp.o" "gcc" "CMakeFiles/controller.dir/main.cpp.o.d"
   )
 

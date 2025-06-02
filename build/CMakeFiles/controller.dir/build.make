@@ -125,10 +125,24 @@ CMakeFiles/controller.dir/controller/utils/Logger.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/controller.dir/controller/utils/Logger.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/controller/utils/Logger.cpp -o CMakeFiles/controller.dir/controller/utils/Logger.cpp.s
 
+CMakeFiles/controller.dir/controller/utils/MetadataManager.cpp.o: CMakeFiles/controller.dir/flags.make
+CMakeFiles/controller.dir/controller/utils/MetadataManager.cpp.o: /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/controller/utils/MetadataManager.cpp
+CMakeFiles/controller.dir/controller/utils/MetadataManager.cpp.o: CMakeFiles/controller.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/controller.dir/controller/utils/MetadataManager.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/controller.dir/controller/utils/MetadataManager.cpp.o -MF CMakeFiles/controller.dir/controller/utils/MetadataManager.cpp.o.d -o CMakeFiles/controller.dir/controller/utils/MetadataManager.cpp.o -c /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/controller/utils/MetadataManager.cpp
+
+CMakeFiles/controller.dir/controller/utils/MetadataManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/controller.dir/controller/utils/MetadataManager.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/controller/utils/MetadataManager.cpp > CMakeFiles/controller.dir/controller/utils/MetadataManager.cpp.i
+
+CMakeFiles/controller.dir/controller/utils/MetadataManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/controller.dir/controller/utils/MetadataManager.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/controller/utils/MetadataManager.cpp -o CMakeFiles/controller.dir/controller/utils/MetadataManager.cpp.s
+
 CMakeFiles/controller.dir/common/generated/tecmfs.pb.cc.o: CMakeFiles/controller.dir/flags.make
 CMakeFiles/controller.dir/common/generated/tecmfs.pb.cc.o: /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/common/generated/tecmfs.pb.cc
 CMakeFiles/controller.dir/common/generated/tecmfs.pb.cc.o: CMakeFiles/controller.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/controller.dir/common/generated/tecmfs.pb.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/controller.dir/common/generated/tecmfs.pb.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/controller.dir/common/generated/tecmfs.pb.cc.o -MF CMakeFiles/controller.dir/common/generated/tecmfs.pb.cc.o.d -o CMakeFiles/controller.dir/common/generated/tecmfs.pb.cc.o -c /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/common/generated/tecmfs.pb.cc
 
 CMakeFiles/controller.dir/common/generated/tecmfs.pb.cc.i: cmake_force
@@ -142,7 +156,7 @@ CMakeFiles/controller.dir/common/generated/tecmfs.pb.cc.s: cmake_force
 CMakeFiles/controller.dir/common/generated/tecmfs.grpc.pb.cc.o: CMakeFiles/controller.dir/flags.make
 CMakeFiles/controller.dir/common/generated/tecmfs.grpc.pb.cc.o: /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/common/generated/tecmfs.grpc.pb.cc
 CMakeFiles/controller.dir/common/generated/tecmfs.grpc.pb.cc.o: CMakeFiles/controller.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/controller.dir/common/generated/tecmfs.grpc.pb.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/controller.dir/common/generated/tecmfs.grpc.pb.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/controller.dir/common/generated/tecmfs.grpc.pb.cc.o -MF CMakeFiles/controller.dir/common/generated/tecmfs.grpc.pb.cc.o.d -o CMakeFiles/controller.dir/common/generated/tecmfs.grpc.pb.cc.o -c /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/common/generated/tecmfs.grpc.pb.cc
 
 CMakeFiles/controller.dir/common/generated/tecmfs.grpc.pb.cc.i: cmake_force
@@ -159,6 +173,7 @@ controller_OBJECTS = \
 "CMakeFiles/controller.dir/controller/client/ControllerClient.cpp.o" \
 "CMakeFiles/controller.dir/controller/raid/RAID5Manager.cpp.o" \
 "CMakeFiles/controller.dir/controller/utils/Logger.cpp.o" \
+"CMakeFiles/controller.dir/controller/utils/MetadataManager.cpp.o" \
 "CMakeFiles/controller.dir/common/generated/tecmfs.pb.cc.o" \
 "CMakeFiles/controller.dir/common/generated/tecmfs.grpc.pb.cc.o"
 
@@ -169,11 +184,13 @@ controller: CMakeFiles/controller.dir/main.cpp.o
 controller: CMakeFiles/controller.dir/controller/client/ControllerClient.cpp.o
 controller: CMakeFiles/controller.dir/controller/raid/RAID5Manager.cpp.o
 controller: CMakeFiles/controller.dir/controller/utils/Logger.cpp.o
+controller: CMakeFiles/controller.dir/controller/utils/MetadataManager.cpp.o
 controller: CMakeFiles/controller.dir/common/generated/tecmfs.pb.cc.o
 controller: CMakeFiles/controller.dir/common/generated/tecmfs.grpc.pb.cc.o
 controller: CMakeFiles/controller.dir/build.make
 controller: /usr/local/lib/libgrpc++.a
 controller: /usr/local/lib/libprotobuf.so
+controller: /usr/lib/x86_64-linux-gnu/libxml2.so
 controller: /usr/local/lib/libgrpc.a
 controller: /usr/local/lib/libupb_json_lib.a
 controller: /usr/local/lib/libupb_textformat_lib.a
@@ -249,7 +266,7 @@ controller: /usr/local/lib/libcrypto.a
 controller: /usr/local/lib/libaddress_sorting.a
 controller: /usr/local/lib/libprotobuf.so
 controller: CMakeFiles/controller.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable controller"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable controller"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/controller.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
