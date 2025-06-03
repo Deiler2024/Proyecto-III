@@ -56,6 +56,14 @@ class DiskService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::tecmfs::BlockData>> PrepareAsyncReadBlock(::grpc::ClientContext* context, const ::tecmfs::BlockIndex& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::tecmfs::BlockData>>(PrepareAsyncReadBlockRaw(context, request, cq));
     }
+    virtual ::grpc::Status DeleteBlock(::grpc::ClientContext* context, const ::tecmfs::BlockIndex& request, ::tecmfs::BlockResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::tecmfs::BlockResponse>> AsyncDeleteBlock(::grpc::ClientContext* context, const ::tecmfs::BlockIndex& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::tecmfs::BlockResponse>>(AsyncDeleteBlockRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::tecmfs::BlockResponse>> PrepareAsyncDeleteBlock(::grpc::ClientContext* context, const ::tecmfs::BlockIndex& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::tecmfs::BlockResponse>>(PrepareAsyncDeleteBlockRaw(context, request, cq));
+    }
+    // ← ¡Nuevo método!
     class async_interface {
      public:
       virtual ~async_interface() {}
@@ -65,6 +73,9 @@ class DiskService final {
       virtual void WriteBlock(::grpc::ClientContext* context, const ::tecmfs::BlockRequest* request, ::tecmfs::BlockResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void ReadBlock(::grpc::ClientContext* context, const ::tecmfs::BlockIndex* request, ::tecmfs::BlockData* response, std::function<void(::grpc::Status)>) = 0;
       virtual void ReadBlock(::grpc::ClientContext* context, const ::tecmfs::BlockIndex* request, ::tecmfs::BlockData* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void DeleteBlock(::grpc::ClientContext* context, const ::tecmfs::BlockIndex* request, ::tecmfs::BlockResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void DeleteBlock(::grpc::ClientContext* context, const ::tecmfs::BlockIndex* request, ::tecmfs::BlockResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      // ← ¡Nuevo método!
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -76,6 +87,8 @@ class DiskService final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::tecmfs::BlockResponse>* PrepareAsyncWriteBlockRaw(::grpc::ClientContext* context, const ::tecmfs::BlockRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::tecmfs::BlockData>* AsyncReadBlockRaw(::grpc::ClientContext* context, const ::tecmfs::BlockIndex& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::tecmfs::BlockData>* PrepareAsyncReadBlockRaw(::grpc::ClientContext* context, const ::tecmfs::BlockIndex& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::tecmfs::BlockResponse>* AsyncDeleteBlockRaw(::grpc::ClientContext* context, const ::tecmfs::BlockIndex& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::tecmfs::BlockResponse>* PrepareAsyncDeleteBlockRaw(::grpc::ClientContext* context, const ::tecmfs::BlockIndex& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -101,6 +114,13 @@ class DiskService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::tecmfs::BlockData>> PrepareAsyncReadBlock(::grpc::ClientContext* context, const ::tecmfs::BlockIndex& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::tecmfs::BlockData>>(PrepareAsyncReadBlockRaw(context, request, cq));
     }
+    ::grpc::Status DeleteBlock(::grpc::ClientContext* context, const ::tecmfs::BlockIndex& request, ::tecmfs::BlockResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::tecmfs::BlockResponse>> AsyncDeleteBlock(::grpc::ClientContext* context, const ::tecmfs::BlockIndex& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::tecmfs::BlockResponse>>(AsyncDeleteBlockRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::tecmfs::BlockResponse>> PrepareAsyncDeleteBlock(::grpc::ClientContext* context, const ::tecmfs::BlockIndex& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::tecmfs::BlockResponse>>(PrepareAsyncDeleteBlockRaw(context, request, cq));
+    }
     class async final :
       public StubInterface::async_interface {
      public:
@@ -110,6 +130,8 @@ class DiskService final {
       void WriteBlock(::grpc::ClientContext* context, const ::tecmfs::BlockRequest* request, ::tecmfs::BlockResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void ReadBlock(::grpc::ClientContext* context, const ::tecmfs::BlockIndex* request, ::tecmfs::BlockData* response, std::function<void(::grpc::Status)>) override;
       void ReadBlock(::grpc::ClientContext* context, const ::tecmfs::BlockIndex* request, ::tecmfs::BlockData* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void DeleteBlock(::grpc::ClientContext* context, const ::tecmfs::BlockIndex* request, ::tecmfs::BlockResponse* response, std::function<void(::grpc::Status)>) override;
+      void DeleteBlock(::grpc::ClientContext* context, const ::tecmfs::BlockIndex* request, ::tecmfs::BlockResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -127,9 +149,12 @@ class DiskService final {
     ::grpc::ClientAsyncResponseReader< ::tecmfs::BlockResponse>* PrepareAsyncWriteBlockRaw(::grpc::ClientContext* context, const ::tecmfs::BlockRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::tecmfs::BlockData>* AsyncReadBlockRaw(::grpc::ClientContext* context, const ::tecmfs::BlockIndex& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::tecmfs::BlockData>* PrepareAsyncReadBlockRaw(::grpc::ClientContext* context, const ::tecmfs::BlockIndex& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::tecmfs::BlockResponse>* AsyncDeleteBlockRaw(::grpc::ClientContext* context, const ::tecmfs::BlockIndex& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::tecmfs::BlockResponse>* PrepareAsyncDeleteBlockRaw(::grpc::ClientContext* context, const ::tecmfs::BlockIndex& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_Ping_;
     const ::grpc::internal::RpcMethod rpcmethod_WriteBlock_;
     const ::grpc::internal::RpcMethod rpcmethod_ReadBlock_;
+    const ::grpc::internal::RpcMethod rpcmethod_DeleteBlock_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -140,6 +165,8 @@ class DiskService final {
     virtual ::grpc::Status Ping(::grpc::ServerContext* context, const ::tecmfs::PingRequest* request, ::tecmfs::PingResponse* response);
     virtual ::grpc::Status WriteBlock(::grpc::ServerContext* context, const ::tecmfs::BlockRequest* request, ::tecmfs::BlockResponse* response);
     virtual ::grpc::Status ReadBlock(::grpc::ServerContext* context, const ::tecmfs::BlockIndex* request, ::tecmfs::BlockData* response);
+    virtual ::grpc::Status DeleteBlock(::grpc::ServerContext* context, const ::tecmfs::BlockIndex* request, ::tecmfs::BlockResponse* response);
+    // ← ¡Nuevo método!
   };
   template <class BaseClass>
   class WithAsyncMethod_Ping : public BaseClass {
@@ -201,7 +228,27 @@ class DiskService final {
       ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_Ping<WithAsyncMethod_WriteBlock<WithAsyncMethod_ReadBlock<Service > > > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_DeleteBlock : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_DeleteBlock() {
+      ::grpc::Service::MarkMethodAsync(3);
+    }
+    ~WithAsyncMethod_DeleteBlock() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status DeleteBlock(::grpc::ServerContext* /*context*/, const ::tecmfs::BlockIndex* /*request*/, ::tecmfs::BlockResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestDeleteBlock(::grpc::ServerContext* context, ::tecmfs::BlockIndex* request, ::grpc::ServerAsyncResponseWriter< ::tecmfs::BlockResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_Ping<WithAsyncMethod_WriteBlock<WithAsyncMethod_ReadBlock<WithAsyncMethod_DeleteBlock<Service > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_Ping : public BaseClass {
    private:
@@ -283,7 +330,34 @@ class DiskService final {
     virtual ::grpc::ServerUnaryReactor* ReadBlock(
       ::grpc::CallbackServerContext* /*context*/, const ::tecmfs::BlockIndex* /*request*/, ::tecmfs::BlockData* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_Ping<WithCallbackMethod_WriteBlock<WithCallbackMethod_ReadBlock<Service > > > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_DeleteBlock : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_DeleteBlock() {
+      ::grpc::Service::MarkMethodCallback(3,
+          new ::grpc::internal::CallbackUnaryHandler< ::tecmfs::BlockIndex, ::tecmfs::BlockResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::tecmfs::BlockIndex* request, ::tecmfs::BlockResponse* response) { return this->DeleteBlock(context, request, response); }));}
+    void SetMessageAllocatorFor_DeleteBlock(
+        ::grpc::MessageAllocator< ::tecmfs::BlockIndex, ::tecmfs::BlockResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::tecmfs::BlockIndex, ::tecmfs::BlockResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_DeleteBlock() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status DeleteBlock(::grpc::ServerContext* /*context*/, const ::tecmfs::BlockIndex* /*request*/, ::tecmfs::BlockResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* DeleteBlock(
+      ::grpc::CallbackServerContext* /*context*/, const ::tecmfs::BlockIndex* /*request*/, ::tecmfs::BlockResponse* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_Ping<WithCallbackMethod_WriteBlock<WithCallbackMethod_ReadBlock<WithCallbackMethod_DeleteBlock<Service > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_Ping : public BaseClass {
@@ -332,6 +406,23 @@ class DiskService final {
     }
     // disable synchronous version of this method
     ::grpc::Status ReadBlock(::grpc::ServerContext* /*context*/, const ::tecmfs::BlockIndex* /*request*/, ::tecmfs::BlockData* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_DeleteBlock : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_DeleteBlock() {
+      ::grpc::Service::MarkMethodGeneric(3);
+    }
+    ~WithGenericMethod_DeleteBlock() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status DeleteBlock(::grpc::ServerContext* /*context*/, const ::tecmfs::BlockIndex* /*request*/, ::tecmfs::BlockResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -394,6 +485,26 @@ class DiskService final {
     }
     void RequestReadBlock(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_DeleteBlock : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_DeleteBlock() {
+      ::grpc::Service::MarkMethodRaw(3);
+    }
+    ~WithRawMethod_DeleteBlock() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status DeleteBlock(::grpc::ServerContext* /*context*/, const ::tecmfs::BlockIndex* /*request*/, ::tecmfs::BlockResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestDeleteBlock(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -460,6 +571,28 @@ class DiskService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* ReadBlock(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_DeleteBlock : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_DeleteBlock() {
+      ::grpc::Service::MarkMethodRawCallback(3,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DeleteBlock(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_DeleteBlock() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status DeleteBlock(::grpc::ServerContext* /*context*/, const ::tecmfs::BlockIndex* /*request*/, ::tecmfs::BlockResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* DeleteBlock(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -543,9 +676,36 @@ class DiskService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedReadBlock(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::tecmfs::BlockIndex,::tecmfs::BlockData>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_Ping<WithStreamedUnaryMethod_WriteBlock<WithStreamedUnaryMethod_ReadBlock<Service > > > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_DeleteBlock : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_DeleteBlock() {
+      ::grpc::Service::MarkMethodStreamed(3,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::tecmfs::BlockIndex, ::tecmfs::BlockResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::tecmfs::BlockIndex, ::tecmfs::BlockResponse>* streamer) {
+                       return this->StreamedDeleteBlock(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_DeleteBlock() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status DeleteBlock(::grpc::ServerContext* /*context*/, const ::tecmfs::BlockIndex* /*request*/, ::tecmfs::BlockResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedDeleteBlock(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::tecmfs::BlockIndex,::tecmfs::BlockResponse>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_Ping<WithStreamedUnaryMethod_WriteBlock<WithStreamedUnaryMethod_ReadBlock<WithStreamedUnaryMethod_DeleteBlock<Service > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_Ping<WithStreamedUnaryMethod_WriteBlock<WithStreamedUnaryMethod_ReadBlock<Service > > > StreamedService;
+  typedef WithStreamedUnaryMethod_Ping<WithStreamedUnaryMethod_WriteBlock<WithStreamedUnaryMethod_ReadBlock<WithStreamedUnaryMethod_DeleteBlock<Service > > > > StreamedService;
 };
 
 }  // namespace tecmfs

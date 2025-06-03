@@ -153,6 +153,29 @@ class DiskServiceImpl final : public DiskService::Service {
         
             return Status::OK;
         }
+        Status DeleteBlock(ServerContext* context, const BlockIndex* request, BlockResponse* response) override {
+            int index = request->index();
+        
+            if (index < 0 || index >= config_.diskSize) {
+                response->set_success(false);
+                response->set_message("Índice de bloque fuera de rango");
+                return Status::OK;
+            }
+        
+            std::string filename = config_.path + "/block_" + std::to_string(index) + ".bin";
+            if (std::filesystem::exists(filename)) {
+                std::filesystem::remove(filename);
+                response->set_success(true);
+                response->set_message("Bloque eliminado exitosamente");
+                std::cout << "Bloque " << index << " eliminado.\n";
+            } else {
+                response->set_success(false);
+                response->set_message("El archivo de bloque no existe");
+            }
+        
+            return Status::OK;
+        }
+        
         
     
     private:
@@ -183,6 +206,7 @@ class DiskServiceImpl final : public DiskService::Service {
         std::cout << "Disk Node ESCUCHA en: " << server_address << std::endl;
         server->Wait();
     }
+    
     
     
 

@@ -6,7 +6,9 @@ service DiskService {
   rpc Ping (PingRequest) returns (PingResponse);
   rpc WriteBlock (BlockRequest) returns (BlockResponse);
   rpc ReadBlock (BlockIndex) returns (BlockData);
+  rpc DeleteBlock (BlockIndex) returns (BlockResponse); // 👈 AÑADIR ESTO
 }
+
 
 message PingRequest {
   string message = 1;

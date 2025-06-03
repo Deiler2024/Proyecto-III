@@ -25,6 +25,7 @@ static const char* DiskService_method_names[] = {
   "/tecmfs.DiskService/Ping",
   "/tecmfs.DiskService/WriteBlock",
   "/tecmfs.DiskService/ReadBlock",
+  "/tecmfs.DiskService/DeleteBlock",
 };
 
 std::unique_ptr< DiskService::Stub> DiskService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -37,6 +38,7 @@ DiskService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
   : channel_(channel), rpcmethod_Ping_(DiskService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_WriteBlock_(DiskService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_ReadBlock_(DiskService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DeleteBlock_(DiskService_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status DiskService::Stub::Ping(::grpc::ClientContext* context, const ::tecmfs::PingRequest& request, ::tecmfs::PingResponse* response) {
@@ -108,6 +110,29 @@ void DiskService::Stub::async::ReadBlock(::grpc::ClientContext* context, const :
   return result;
 }
 
+::grpc::Status DiskService::Stub::DeleteBlock(::grpc::ClientContext* context, const ::tecmfs::BlockIndex& request, ::tecmfs::BlockResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::tecmfs::BlockIndex, ::tecmfs::BlockResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DeleteBlock_, context, request, response);
+}
+
+void DiskService::Stub::async::DeleteBlock(::grpc::ClientContext* context, const ::tecmfs::BlockIndex* request, ::tecmfs::BlockResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::tecmfs::BlockIndex, ::tecmfs::BlockResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DeleteBlock_, context, request, response, std::move(f));
+}
+
+void DiskService::Stub::async::DeleteBlock(::grpc::ClientContext* context, const ::tecmfs::BlockIndex* request, ::tecmfs::BlockResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DeleteBlock_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::tecmfs::BlockResponse>* DiskService::Stub::PrepareAsyncDeleteBlockRaw(::grpc::ClientContext* context, const ::tecmfs::BlockIndex& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::tecmfs::BlockResponse, ::tecmfs::BlockIndex, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_DeleteBlock_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::tecmfs::BlockResponse>* DiskService::Stub::AsyncDeleteBlockRaw(::grpc::ClientContext* context, const ::tecmfs::BlockIndex& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncDeleteBlockRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 DiskService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       DiskService_method_names[0],
@@ -139,6 +164,16 @@ DiskService::Service::Service() {
              ::tecmfs::BlockData* resp) {
                return service->ReadBlock(ctx, req, resp);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      DiskService_method_names[3],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< DiskService::Service, ::tecmfs::BlockIndex, ::tecmfs::BlockResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](DiskService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::tecmfs::BlockIndex* req,
+             ::tecmfs::BlockResponse* resp) {
+               return service->DeleteBlock(ctx, req, resp);
+             }, this)));
 }
 
 DiskService::Service::~Service() {
@@ -159,6 +194,13 @@ DiskService::Service::~Service() {
 }
 
 ::grpc::Status DiskService::Service::ReadBlock(::grpc::ServerContext* context, const ::tecmfs::BlockIndex* request, ::tecmfs::BlockData* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status DiskService::Service::DeleteBlock(::grpc::ServerContext* context, const ::tecmfs::BlockIndex* request, ::tecmfs::BlockResponse* response) {
   (void) context;
   (void) request;
   (void) response;
