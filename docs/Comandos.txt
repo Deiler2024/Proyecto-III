@@ -25,3 +25,17 @@ ejecutar controller (estando en la raiz):
 ./build/disk_node disk_node_2/config.xml
 ./build/disk_node disk_node_3/config.xml
 ./build/disk_node disk_node_4/config.xml
+
+
+
+./build/controller write proyecto.pdf
+
+
+./build/controller read proyecto.pdf reconstruido.pdf
+
+
+./build/controller delete proyecto.pdf
+
+
+
+./build/controller

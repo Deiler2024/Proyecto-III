@@ -61,8 +61,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-0nJnyb"
-      binary: "/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-0nJnyb"
+      source: "/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-McTv7I"
+      binary: "/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-McTv7I"
     cmakeVariables:
       CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS-NOTFOUND"
       CMAKE_C_FLAGS: ""
@@ -72,13 +72,13 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-0nJnyb'
+        Change Dir: '/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-McTv7I'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_74898/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_74898.dir/build.make CMakeFiles/cmTC_74898.dir/build
-        gmake[1]: Entering directory '/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-0nJnyb'
-        Building C object CMakeFiles/cmTC_74898.dir/CMakeCCompilerABI.c.o
-        /usr/bin/clang   -v -MD -MT CMakeFiles/cmTC_74898.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_74898.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_74898.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_fc8ba/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_fc8ba.dir/build.make CMakeFiles/cmTC_fc8ba.dir/build
+        gmake[1]: Entering directory '/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-McTv7I'
+        Building C object CMakeFiles/cmTC_fc8ba.dir/CMakeCCompilerABI.c.o
+        /usr/bin/clang   -v -MD -MT CMakeFiles/cmTC_fc8ba.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_fc8ba.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_fc8ba.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c
         Ubuntu clang version 18.1.3 (1ubuntu1)
         Target: x86_64-pc-linux-gnu
         Thread model: posix
@@ -88,7 +88,7 @@ events:
         Candidate multilib: .;@m64
         Selected multilib: .;@m64
          (in-process)
-         "/usr/lib/llvm-18/bin/clang" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-0nJnyb -v -fcoverage-compilation-dir=/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-0nJnyb -resource-dir /usr/lib/llvm-18/lib/clang/18 -dependency-file CMakeFiles/cmTC_74898.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_74898.dir/CMakeCCompilerABI.c.o -sys-header-deps -internal-isystem /usr/lib/llvm-18/lib/clang/18/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -ferror-limit 19 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_74898.dir/CMakeCCompilerABI.c.o -x c /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c
+         "/usr/lib/llvm-18/bin/clang" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-McTv7I -v -fcoverage-compilation-dir=/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-McTv7I -resource-dir /usr/lib/llvm-18/lib/clang/18 -dependency-file CMakeFiles/cmTC_fc8ba.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_fc8ba.dir/CMakeCCompilerABI.c.o -sys-header-deps -internal-isystem /usr/lib/llvm-18/lib/clang/18/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -ferror-limit 19 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_fc8ba.dir/CMakeCCompilerABI.c.o -x c /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c
         clang -cc1 version 18.1.3 based upon LLVM 18.1.3 default target x86_64-pc-linux-gnu
         ignoring nonexistent directory "/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include"
         ignoring nonexistent directory "/include"
@@ -99,9 +99,9 @@ events:
          /usr/include/x86_64-linux-gnu
          /usr/include
         End of search list.
-        Linking C executable cmTC_74898
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_74898.dir/link.txt --verbose=1
-        /usr/bin/clang  -v CMakeFiles/cmTC_74898.dir/CMakeCCompilerABI.c.o -o cmTC_74898 
+        Linking C executable cmTC_fc8ba
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fc8ba.dir/link.txt --verbose=1
+        /usr/bin/clang  -v CMakeFiles/cmTC_fc8ba.dir/CMakeCCompilerABI.c.o -o cmTC_fc8ba 
         Ubuntu clang version 18.1.3 (1ubuntu1)
         Target: x86_64-pc-linux-gnu
         Thread model: posix
@@ -110,8 +110,8 @@ events:
         Selected GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/13
         Candidate multilib: .;@m64
         Selected multilib: .;@m64
-         "/usr/bin/ld" -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_74898 /lib/x86_64-linux-gnu/Scrt1.o /lib/x86_64-linux-gnu/crti.o /usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/bin/../lib/gcc/x86_64-linux-gnu/13 -L/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/usr/lib/llvm-18/bin/../lib -L/lib -L/usr/lib CMakeFiles/cmTC_74898.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtendS.o /lib/x86_64-linux-gnu/crtn.o
-        gmake[1]: Leaving directory '/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-0nJnyb'
+         "/usr/bin/ld" -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_fc8ba /lib/x86_64-linux-gnu/Scrt1.o /lib/x86_64-linux-gnu/crti.o /usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/bin/../lib/gcc/x86_64-linux-gnu/13 -L/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/usr/lib/llvm-18/bin/../lib -L/lib -L/usr/lib CMakeFiles/cmTC_fc8ba.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtendS.o /lib/x86_64-linux-gnu/crtn.o
+        gmake[1]: Leaving directory '/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-McTv7I'
         
       exitCode: 0
   -
@@ -145,13 +145,13 @@ events:
     message: |
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        ignore line: [Change Dir: '/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-0nJnyb']
+        ignore line: [Change Dir: '/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-McTv7I']
         ignore line: []
-        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_74898/fast]
-        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_74898.dir/build.make CMakeFiles/cmTC_74898.dir/build]
-        ignore line: [gmake[1]: Entering directory '/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-0nJnyb']
-        ignore line: [Building C object CMakeFiles/cmTC_74898.dir/CMakeCCompilerABI.c.o]
-        ignore line: [/usr/bin/clang   -v -MD -MT CMakeFiles/cmTC_74898.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_74898.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_74898.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c]
+        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_fc8ba/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_fc8ba.dir/build.make CMakeFiles/cmTC_fc8ba.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-McTv7I']
+        ignore line: [Building C object CMakeFiles/cmTC_fc8ba.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/usr/bin/clang   -v -MD -MT CMakeFiles/cmTC_fc8ba.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_fc8ba.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_fc8ba.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c]
         ignore line: [Ubuntu clang version 18.1.3 (1ubuntu1)]
         ignore line: [Target: x86_64-pc-linux-gnu]
         ignore line: [Thread model: posix]
@@ -163,7 +163,7 @@ events:
         ignore line: [Selected multilib: .]
         ignore line: [@m64]
         ignore line: [ (in-process)]
-        ignore line: [ "/usr/lib/llvm-18/bin/clang" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-0nJnyb -v -fcoverage-compilation-dir=/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-0nJnyb -resource-dir /usr/lib/llvm-18/lib/clang/18 -dependency-file CMakeFiles/cmTC_74898.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_74898.dir/CMakeCCompilerABI.c.o -sys-header-deps -internal-isystem /usr/lib/llvm-18/lib/clang/18/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -ferror-limit 19 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_74898.dir/CMakeCCompilerABI.c.o -x c /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c]
+        ignore line: [ "/usr/lib/llvm-18/bin/clang" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-McTv7I -v -fcoverage-compilation-dir=/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-McTv7I -resource-dir /usr/lib/llvm-18/lib/clang/18 -dependency-file CMakeFiles/cmTC_fc8ba.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_fc8ba.dir/CMakeCCompilerABI.c.o -sys-header-deps -internal-isystem /usr/lib/llvm-18/lib/clang/18/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -ferror-limit 19 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_fc8ba.dir/CMakeCCompilerABI.c.o -x c /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c]
         ignore line: [clang -cc1 version 18.1.3 based upon LLVM 18.1.3 default target x86_64-pc-linux-gnu]
         ignore line: [ignoring nonexistent directory "/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include"]
         ignore line: [ignoring nonexistent directory "/include"]
@@ -174,9 +174,9 @@ events:
         ignore line: [ /usr/include/x86_64-linux-gnu]
         ignore line: [ /usr/include]
         ignore line: [End of search list.]
-        ignore line: [Linking C executable cmTC_74898]
-        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_74898.dir/link.txt --verbose=1]
-        ignore line: [/usr/bin/clang  -v CMakeFiles/cmTC_74898.dir/CMakeCCompilerABI.c.o -o cmTC_74898 ]
+        ignore line: [Linking C executable cmTC_fc8ba]
+        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fc8ba.dir/link.txt --verbose=1]
+        ignore line: [/usr/bin/clang  -v CMakeFiles/cmTC_fc8ba.dir/CMakeCCompilerABI.c.o -o cmTC_fc8ba ]
         ignore line: [Ubuntu clang version 18.1.3 (1ubuntu1)]
         ignore line: [Target: x86_64-pc-linux-gnu]
         ignore line: [Thread model: posix]
@@ -187,7 +187,7 @@ events:
         ignore line: [@m64]
         ignore line: [Selected multilib: .]
         ignore line: [@m64]
-        link line: [ "/usr/bin/ld" -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_74898 /lib/x86_64-linux-gnu/Scrt1.o /lib/x86_64-linux-gnu/crti.o /usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/bin/../lib/gcc/x86_64-linux-gnu/13 -L/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/usr/lib/llvm-18/bin/../lib -L/lib -L/usr/lib CMakeFiles/cmTC_74898.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtendS.o /lib/x86_64-linux-gnu/crtn.o]
+        link line: [ "/usr/bin/ld" -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_fc8ba /lib/x86_64-linux-gnu/Scrt1.o /lib/x86_64-linux-gnu/crti.o /usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/bin/../lib/gcc/x86_64-linux-gnu/13 -L/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/usr/lib/llvm-18/bin/../lib -L/lib -L/usr/lib CMakeFiles/cmTC_fc8ba.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtendS.o /lib/x86_64-linux-gnu/crtn.o]
           arg [/usr/bin/ld] ==> ignore
           arg [-zrelro] ==> ignore
           arg [--hash-style=gnu] ==> ignore
@@ -199,7 +199,7 @@ events:
           arg [-dynamic-linker] ==> ignore
           arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_74898] ==> ignore
+          arg [cmTC_fc8ba] ==> ignore
           arg [/lib/x86_64-linux-gnu/Scrt1.o] ==> obj [/lib/x86_64-linux-gnu/Scrt1.o]
           arg [/lib/x86_64-linux-gnu/crti.o] ==> obj [/lib/x86_64-linux-gnu/crti.o]
           arg [/usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtbeginS.o] ==> obj [/usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtbeginS.o]
@@ -212,7 +212,7 @@ events:
           arg [-L/usr/lib/llvm-18/bin/../lib] ==> dir [/usr/lib/llvm-18/bin/../lib]
           arg [-L/lib] ==> dir [/lib]
           arg [-L/usr/lib] ==> dir [/usr/lib]
-          arg [CMakeFiles/cmTC_74898.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [CMakeFiles/cmTC_fc8ba.dir/CMakeCCompilerABI.c.o] ==> ignore
           arg [-lgcc] ==> lib [gcc]
           arg [--as-needed] ==> ignore
           arg [-lgcc_s] ==> lib [gcc_s]
@@ -250,8 +250,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-JdA3Qr"
-      binary: "/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-JdA3Qr"
+      source: "/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-H0csnT"
+      binary: "/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-H0csnT"
     cmakeVariables:
       CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS-NOTFOUND"
       CMAKE_CXX_FLAGS: ""
@@ -261,13 +261,13 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-JdA3Qr'
+        Change Dir: '/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-H0csnT'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_84ecc/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_84ecc.dir/build.make CMakeFiles/cmTC_84ecc.dir/build
-        gmake[1]: Entering directory '/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-JdA3Qr'
-        Building CXX object CMakeFiles/cmTC_84ecc.dir/CMakeCXXCompilerABI.cpp.o
-        /usr/bin/clang++   -v -MD -MT CMakeFiles/cmTC_84ecc.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_84ecc.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_84ecc.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_4bf4f/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_4bf4f.dir/build.make CMakeFiles/cmTC_4bf4f.dir/build
+        gmake[1]: Entering directory '/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-H0csnT'
+        Building CXX object CMakeFiles/cmTC_4bf4f.dir/CMakeCXXCompilerABI.cpp.o
+        /usr/bin/clang++   -v -MD -MT CMakeFiles/cmTC_4bf4f.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_4bf4f.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_4bf4f.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp
         Ubuntu clang version 18.1.3 (1ubuntu1)
         Target: x86_64-pc-linux-gnu
         Thread model: posix
@@ -277,7 +277,7 @@ events:
         Candidate multilib: .;@m64
         Selected multilib: .;@m64
          (in-process)
-         "/usr/lib/llvm-18/bin/clang" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-JdA3Qr -v -fcoverage-compilation-dir=/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-JdA3Qr -resource-dir /usr/lib/llvm-18/lib/clang/18 -dependency-file CMakeFiles/cmTC_84ecc.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_84ecc.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/x86_64-linux-gnu/c++/13 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/backward -internal-isystem /usr/lib/llvm-18/lib/clang/18/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdeprecated-macro -ferror-limit 19 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_84ecc.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp
+         "/usr/lib/llvm-18/bin/clang" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-H0csnT -v -fcoverage-compilation-dir=/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-H0csnT -resource-dir /usr/lib/llvm-18/lib/clang/18 -dependency-file CMakeFiles/cmTC_4bf4f.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_4bf4f.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/x86_64-linux-gnu/c++/13 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/backward -internal-isystem /usr/lib/llvm-18/lib/clang/18/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdeprecated-macro -ferror-limit 19 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_4bf4f.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp
         clang -cc1 version 18.1.3 based upon LLVM 18.1.3 default target x86_64-pc-linux-gnu
         ignoring nonexistent directory "/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include"
         ignoring nonexistent directory "/include"
@@ -291,9 +291,9 @@ events:
          /usr/include/x86_64-linux-gnu
          /usr/include
         End of search list.
-        Linking CXX executable cmTC_84ecc
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_84ecc.dir/link.txt --verbose=1
-        /usr/bin/clang++  -v CMakeFiles/cmTC_84ecc.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_84ecc 
+        Linking CXX executable cmTC_4bf4f
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4bf4f.dir/link.txt --verbose=1
+        /usr/bin/clang++  -v CMakeFiles/cmTC_4bf4f.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_4bf4f 
         Ubuntu clang version 18.1.3 (1ubuntu1)
         Target: x86_64-pc-linux-gnu
         Thread model: posix
@@ -302,8 +302,8 @@ events:
         Selected GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/13
         Candidate multilib: .;@m64
         Selected multilib: .;@m64
-         "/usr/bin/ld" -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_84ecc /lib/x86_64-linux-gnu/Scrt1.o /lib/x86_64-linux-gnu/crti.o /usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/bin/../lib/gcc/x86_64-linux-gnu/13 -L/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/usr/lib/llvm-18/bin/../lib -L/lib -L/usr/lib CMakeFiles/cmTC_84ecc.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtendS.o /lib/x86_64-linux-gnu/crtn.o
-        gmake[1]: Leaving directory '/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-JdA3Qr'
+         "/usr/bin/ld" -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_4bf4f /lib/x86_64-linux-gnu/Scrt1.o /lib/x86_64-linux-gnu/crti.o /usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/bin/../lib/gcc/x86_64-linux-gnu/13 -L/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/usr/lib/llvm-18/bin/../lib -L/lib -L/usr/lib CMakeFiles/cmTC_4bf4f.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtendS.o /lib/x86_64-linux-gnu/crtn.o
+        gmake[1]: Leaving directory '/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-H0csnT'
         
       exitCode: 0
   -
@@ -343,13 +343,13 @@ events:
     message: |
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        ignore line: [Change Dir: '/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-JdA3Qr']
+        ignore line: [Change Dir: '/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-H0csnT']
         ignore line: []
-        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_84ecc/fast]
-        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_84ecc.dir/build.make CMakeFiles/cmTC_84ecc.dir/build]
-        ignore line: [gmake[1]: Entering directory '/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-JdA3Qr']
-        ignore line: [Building CXX object CMakeFiles/cmTC_84ecc.dir/CMakeCXXCompilerABI.cpp.o]
-        ignore line: [/usr/bin/clang++   -v -MD -MT CMakeFiles/cmTC_84ecc.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_84ecc.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_84ecc.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_4bf4f/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_4bf4f.dir/build.make CMakeFiles/cmTC_4bf4f.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-H0csnT']
+        ignore line: [Building CXX object CMakeFiles/cmTC_4bf4f.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/usr/bin/clang++   -v -MD -MT CMakeFiles/cmTC_4bf4f.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_4bf4f.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_4bf4f.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [Ubuntu clang version 18.1.3 (1ubuntu1)]
         ignore line: [Target: x86_64-pc-linux-gnu]
         ignore line: [Thread model: posix]
@@ -361,7 +361,7 @@ events:
         ignore line: [Selected multilib: .]
         ignore line: [@m64]
         ignore line: [ (in-process)]
-        ignore line: [ "/usr/lib/llvm-18/bin/clang" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-JdA3Qr -v -fcoverage-compilation-dir=/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-JdA3Qr -resource-dir /usr/lib/llvm-18/lib/clang/18 -dependency-file CMakeFiles/cmTC_84ecc.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_84ecc.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/x86_64-linux-gnu/c++/13 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/backward -internal-isystem /usr/lib/llvm-18/lib/clang/18/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdeprecated-macro -ferror-limit 19 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_84ecc.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [ "/usr/lib/llvm-18/bin/clang" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -fdebug-compilation-dir=/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-H0csnT -v -fcoverage-compilation-dir=/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-H0csnT -resource-dir /usr/lib/llvm-18/lib/clang/18 -dependency-file CMakeFiles/cmTC_4bf4f.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_4bf4f.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/x86_64-linux-gnu/c++/13 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/backward -internal-isystem /usr/lib/llvm-18/lib/clang/18/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdeprecated-macro -ferror-limit 19 -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_4bf4f.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [clang -cc1 version 18.1.3 based upon LLVM 18.1.3 default target x86_64-pc-linux-gnu]
         ignore line: [ignoring nonexistent directory "/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../x86_64-linux-gnu/include"]
         ignore line: [ignoring nonexistent directory "/include"]
@@ -375,9 +375,9 @@ events:
         ignore line: [ /usr/include/x86_64-linux-gnu]
         ignore line: [ /usr/include]
         ignore line: [End of search list.]
-        ignore line: [Linking CXX executable cmTC_84ecc]
-        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_84ecc.dir/link.txt --verbose=1]
-        ignore line: [/usr/bin/clang++  -v CMakeFiles/cmTC_84ecc.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_84ecc ]
+        ignore line: [Linking CXX executable cmTC_4bf4f]
+        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4bf4f.dir/link.txt --verbose=1]
+        ignore line: [/usr/bin/clang++  -v CMakeFiles/cmTC_4bf4f.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_4bf4f ]
         ignore line: [Ubuntu clang version 18.1.3 (1ubuntu1)]
         ignore line: [Target: x86_64-pc-linux-gnu]
         ignore line: [Thread model: posix]
@@ -388,7 +388,7 @@ events:
         ignore line: [@m64]
         ignore line: [Selected multilib: .]
         ignore line: [@m64]
-        link line: [ "/usr/bin/ld" -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_84ecc /lib/x86_64-linux-gnu/Scrt1.o /lib/x86_64-linux-gnu/crti.o /usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/bin/../lib/gcc/x86_64-linux-gnu/13 -L/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/usr/lib/llvm-18/bin/../lib -L/lib -L/usr/lib CMakeFiles/cmTC_84ecc.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtendS.o /lib/x86_64-linux-gnu/crtn.o]
+        link line: [ "/usr/bin/ld" -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -pie -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_4bf4f /lib/x86_64-linux-gnu/Scrt1.o /lib/x86_64-linux-gnu/crti.o /usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/bin/../lib/gcc/x86_64-linux-gnu/13 -L/usr/bin/../lib/gcc/x86_64-linux-gnu/13/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/usr/lib/llvm-18/bin/../lib -L/lib -L/usr/lib CMakeFiles/cmTC_4bf4f.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtendS.o /lib/x86_64-linux-gnu/crtn.o]
           arg [/usr/bin/ld] ==> ignore
           arg [-zrelro] ==> ignore
           arg [--hash-style=gnu] ==> ignore
@@ -400,7 +400,7 @@ events:
           arg [-dynamic-linker] ==> ignore
           arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_84ecc] ==> ignore
+          arg [cmTC_4bf4f] ==> ignore
           arg [/lib/x86_64-linux-gnu/Scrt1.o] ==> obj [/lib/x86_64-linux-gnu/Scrt1.o]
           arg [/lib/x86_64-linux-gnu/crti.o] ==> obj [/lib/x86_64-linux-gnu/crti.o]
           arg [/usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtbeginS.o] ==> obj [/usr/bin/../lib/gcc/x86_64-linux-gnu/13/crtbeginS.o]
@@ -413,7 +413,7 @@ events:
           arg [-L/usr/lib/llvm-18/bin/../lib] ==> dir [/usr/lib/llvm-18/bin/../lib]
           arg [-L/lib] ==> dir [/lib]
           arg [-L/usr/lib] ==> dir [/usr/lib]
-          arg [CMakeFiles/cmTC_84ecc.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [CMakeFiles/cmTC_4bf4f.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
           arg [-lstdc++] ==> lib [stdc++]
           arg [-lm] ==> lib [m]
           arg [-lgcc_s] ==> lib [gcc_s]
@@ -450,8 +450,8 @@ events:
       - "/usr/share/cmake-3.28/Modules/FindProtobuf.cmake:541 (find_package)"
       - "CMakeLists.txt:7 (find_package)"
     directories:
-      source: "/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-Ah3GhP"
-      binary: "/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-Ah3GhP"
+      source: "/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-yBPgZf"
+      binary: "/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-yBPgZf"
     cmakeVariables:
       CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS-NOTFOUND"
       CMAKE_C_FLAGS: ""
@@ -461,17 +461,17 @@ events:
       variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: '/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-Ah3GhP'
+        Change Dir: '/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-yBPgZf'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_573cf/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_573cf.dir/build.make CMakeFiles/cmTC_573cf.dir/build
-        gmake[1]: se entra en el directorio '/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-Ah3GhP'
-        Building C object CMakeFiles/cmTC_573cf.dir/src.c.o
-        /usr/bin/clang -DCMAKE_HAVE_LIBC_PTHREAD   -MD -MT CMakeFiles/cmTC_573cf.dir/src.c.o -MF CMakeFiles/cmTC_573cf.dir/src.c.o.d -o CMakeFiles/cmTC_573cf.dir/src.c.o -c /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-Ah3GhP/src.c
-        Linking C executable cmTC_573cf
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_573cf.dir/link.txt --verbose=1
-        /usr/bin/clang CMakeFiles/cmTC_573cf.dir/src.c.o -o cmTC_573cf 
-        gmake[1]: se sale del directorio '/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-Ah3GhP'
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_bbd53/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_bbd53.dir/build.make CMakeFiles/cmTC_bbd53.dir/build
+        gmake[1]: se entra en el directorio '/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-yBPgZf'
+        Building C object CMakeFiles/cmTC_bbd53.dir/src.c.o
+        /usr/bin/clang -DCMAKE_HAVE_LIBC_PTHREAD   -MD -MT CMakeFiles/cmTC_bbd53.dir/src.c.o -MF CMakeFiles/cmTC_bbd53.dir/src.c.o.d -o CMakeFiles/cmTC_bbd53.dir/src.c.o -c /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-yBPgZf/src.c
+        Linking C executable cmTC_bbd53
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bbd53.dir/link.txt --verbose=1
+        /usr/bin/clang CMakeFiles/cmTC_bbd53.dir/src.c.o -o cmTC_bbd53 
+        gmake[1]: se sale del directorio '/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles/CMakeScratch/TryCompile-yBPgZf'
         
       exitCode: 0
 ...

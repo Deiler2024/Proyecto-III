@@ -3,7 +3,7 @@
 #include <fstream>
 #include <vector>
 #include <iostream>
-#include "../../common/generated/tecmfs.grpc.pb.h"
+#include <filesystem>
 
 using grpc::ClientContext;
 using grpc::Status;
@@ -21,6 +21,8 @@ std::pair<int, int> RAID5Manager::WriteFile(const std::string& filepath) {
         std::cerr << "No se pudo abrir el archivo: " << filepath << std::endl;
         return {0, 0};
     }
+
+    std::string filename = std::filesystem::path(filepath).filename().string();
 
     const int blockSize = 4096;
     int globalIndex = 0;
@@ -45,7 +47,7 @@ std::pair<int, int> RAID5Manager::WriteFile(const std::string& filepath) {
 
         if (dataBlocks.empty()) break;
 
-        lastBlockSize = validSizes.back();  // Último tamaño válido leído
+        lastBlockSize = validSizes.back();
 
         std::string parity(blockSize, 0);
         for (int i = 0; i < dataBlocks.size(); ++i) {
@@ -91,15 +93,19 @@ std::pair<int, int> RAID5Manager::WriteFile(const std::string& filepath) {
     file.close();
 
     MetadataManager meta;
-    meta.SaveMetadata(writtenDataBlocks, lastBlockSize);
-
+    meta.SaveMetadata(filename, writtenDataBlocks, lastBlockSize);
     return {writtenDataBlocks, lastBlockSize};
 }
 
-void RAID5Manager::ReadFile(const std::string& outputPath, int /*unused*/) {
+void RAID5Manager::ReadFile(const std::string& outputPath, const std::string& originalFilename) {
     MetadataManager meta;
-    auto [totalDataBlocks, lastBlockSize] = meta.LoadMetadata();
+    auto [totalDataBlocks, lastBlockSize] = meta.LoadMetadata(originalFilename);
+    if (totalDataBlocks == 0 || lastBlockSize == 0) {
+        std::cerr << "❌ Error: No se encontraron metadatos para '" << originalFilename << "'." << std::endl;
+        return;
+    }
 
+    
     std::ofstream outFile(outputPath, std::ios::binary);
     if (!outFile) {
         std::cerr << "No se pudo crear el archivo: " << outputPath << std::endl;
@@ -113,59 +119,100 @@ void RAID5Manager::ReadFile(const std::string& outputPath, int /*unused*/) {
 
     while (blocksRecovered < totalDataBlocks) {
         int parityNode = group % 4;
-        std::array<std::string, 4> blockData{};
-        std::array<bool, 4> blockOk{false, false, false, false};
 
-        // Leer los 4 bloques del grupo
-        for (int offset = 0; offset < 4; ++offset) {
+        for (int offset = 0; offset < 4 && blocksRecovered < totalDataBlocks; ++offset) {
             int node = (parityNode + offset) % 4;
+
+            if (offset == 0) {
+                globalIndex++; // Saltar bloque de paridad
+                continue;
+            }
+
             BlockIndex request;
-            request.set_index(globalIndex + offset);
+            request.set_index(globalIndex++);
 
             BlockData response;
             ClientContext context;
             Status status = controller_.GetStub(node)->ReadBlock(&context, request, &response);
 
             if (status.ok() && response.success()) {
-                blockData[offset] = response.data();
-                blockOk[offset] = true;
-            }
-        }
-
-        // Recuperar los bloques de datos, excepto paridad
-        for (int offset = 0; offset < 4 && blocksRecovered < totalDataBlocks; ++offset) {
-            int node = (parityNode + offset) % 4;
-            if (offset == 0) continue;  // Paridad
-
-            std::string data;
-            if (blockOk[offset]) {
-                data = blockData[offset];
-            } else {
-                // Reconstrucción por XOR
-                data.assign(blockSize, 0);
-                for (int j = 0; j < 4; ++j) {
-                    if (j == offset || !blockOk[j]) continue;
-                    for (int k = 0; k < blockData[j].size(); ++k) {
-                        data[k] ^= blockData[j][k];
-                    }
+                std::string data = response.data();
+                if (blocksRecovered == totalDataBlocks - 1) {
+                    data.resize(lastBlockSize);
                 }
-                std::cout << "⚠️  Bloque " << blocksRecovered << " reconstruido por paridad XOR\n";
-            }
 
-            if (blocksRecovered == totalDataBlocks - 1) {
-                data.resize(lastBlockSize);
-            }
+                outFile.write(data.data(), data.size());
 
-            outFile.write(data.data(), data.size());
-            std::cout << "Bloque de datos " << blocksRecovered
-                      << " procesado (" << data.size() << " bytes)" << std::endl;
-            blocksRecovered++;
+                std::cout << "Bloque de datos " << blocksRecovered
+                          << " leído desde Nodo " << node << " (" << data.size() << " bytes)" << std::endl;
+
+                blocksRecovered++;
+            } else {
+                std::cerr << "❌ Error al leer bloque de datos " << blocksRecovered
+                          << " del Nodo " << node << ": "
+                          << (status.ok() ? response.message() : status.error_message()) << std::endl;
+                outFile.close();
+                return;
+            }
         }
 
-        globalIndex += 4;
         group++;
     }
 
     outFile.close();
     std::cout << "Archivo RAID reconstruido como: " << outputPath << std::endl;
 }
+
+void RAID5Manager::ListFiles() {
+    MetadataManager meta;
+    auto files = meta.ListStoredFiles();
+
+    std::cout << "[INFO] Archivos almacenados en RAID 5:\n";
+    for (const auto& name : files) {
+        std::cout << " - " << name << "\n";
+    }
+}
+void RAID5Manager::DeleteFile(const std::string& filename) {
+    MetadataManager meta;
+    auto [totalBlocks, _] = meta.LoadMetadata(filename);  // usamos solo totalBlocks
+
+    if (totalBlocks == 0) {
+        std::cerr << "❌ No se encontraron metadatos para el archivo '" << filename << "'." << std::endl;
+        return;
+    }
+
+    const int blocksPerStripe = 3;
+    int totalGroups = (totalBlocks + blocksPerStripe - 1) / blocksPerStripe;
+    int globalIndex = 0;
+
+    for (int group = 0; group < totalGroups; ++group) {
+        int parityNode = group % 4;
+
+        for (int offset = 0; offset < 4; ++offset) {
+            int node = (parityNode + offset) % 4;
+
+            // No podemos eliminar más bloques de los que se escribieron
+            if (globalIndex >= (totalBlocks + totalGroups)) break;
+
+            BlockIndex request;
+            request.set_index(globalIndex++);
+
+            BlockResponse response;
+            ClientContext context;
+
+            Status status = controller_.GetStub(node)->DeleteBlock(&context, request, &response);
+            if (status.ok() && response.success()) {
+                std::cout << "[Nodo " << node << "] Bloque " << request.index()
+                          << " eliminado ✅" << std::endl;
+            } else {
+                std::cerr << "[Nodo " << node << "] Error al eliminar bloque "
+                          << request.index() << ": "
+                          << (status.ok() ? response.message() : status.error_message()) << std::endl;
+            }
+        }
+    }
+
+    meta.DeleteMetadata(filename);  // elimina el archivo .meta
+    std::cout << "[INFO] Archivo '" << filename << "' eliminado del sistema RAID 5." << std::endl;
+}
+

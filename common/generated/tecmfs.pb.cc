@@ -181,16 +181,17 @@ const char descriptor_table_protodef_tecmfs_2eproto[] PROTOBUF_SECTION_VARIABLE(
   "\n\004data\030\002 \001(\014\"1\n\rBlockResponse\022\017\n\007success"
   "\030\001 \001(\010\022\017\n\007message\030\002 \001(\t\"\033\n\nBlockIndex\022\r\n"
   "\005index\030\001 \001(\005\";\n\tBlockData\022\014\n\004data\030\001 \001(\014\022"
-  "\017\n\007success\030\002 \001(\010\022\017\n\007message\030\003 \001(\t2\257\001\n\013Di"
+  "\017\n\007success\030\002 \001(\010\022\017\n\007message\030\003 \001(\t2\351\001\n\013Di"
   "skService\0221\n\004Ping\022\023.tecmfs.PingRequest\032\024"
   ".tecmfs.PingResponse\0229\n\nWriteBlock\022\024.tec"
   "mfs.BlockRequest\032\025.tecmfs.BlockResponse\022"
   "2\n\tReadBlock\022\022.tecmfs.BlockIndex\032\021.tecmf"
-  "s.BlockDatab\006proto3"
+  "s.BlockData\0228\n\013DeleteBlock\022\022.tecmfs.Bloc"
+  "kIndex\032\025.tecmfs.BlockResponseb\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_tecmfs_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_tecmfs_2eproto = {
-    false, false, 459, descriptor_table_protodef_tecmfs_2eproto,
+    false, false, 517, descriptor_table_protodef_tecmfs_2eproto,
     "tecmfs.proto",
     &descriptor_table_tecmfs_2eproto_once, nullptr, 0, 6,
     schemas, file_default_instances, TableStruct_tecmfs_2eproto::offsets,
