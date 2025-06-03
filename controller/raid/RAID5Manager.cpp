@@ -113,42 +113,56 @@ void RAID5Manager::ReadFile(const std::string& outputPath, int /*unused*/) {
 
     while (blocksRecovered < totalDataBlocks) {
         int parityNode = group % 4;
+        std::array<std::string, 4> blockData{};
+        std::array<bool, 4> blockOk{false, false, false, false};
 
-        for (int offset = 0; offset < 4 && blocksRecovered < totalDataBlocks; ++offset) {
+        // Leer los 4 bloques del grupo
+        for (int offset = 0; offset < 4; ++offset) {
             int node = (parityNode + offset) % 4;
-
-            if (offset == 0) {
-                globalIndex++;  // Saltar paridad
-                continue;
-            }
-
             BlockIndex request;
-            request.set_index(globalIndex++);
+            request.set_index(globalIndex + offset);
 
             BlockData response;
             ClientContext context;
             Status status = controller_.GetStub(node)->ReadBlock(&context, request, &response);
 
             if (status.ok() && response.success()) {
-                std::string data = response.data();
-                if (blocksRecovered == totalDataBlocks - 1) {
-                    data.resize(lastBlockSize);
-                }
-
-                outFile.write(data.data(), data.size());
-                std::cout << "Bloque de datos " << blocksRecovered
-                          << " leído desde Nodo " << node << " (" << data.size() << " bytes)" << std::endl;
-
-                blocksRecovered++;
-            } else {
-                std::cerr << "❌ Error al leer bloque " << blocksRecovered
-                          << " del Nodo " << node << ": "
-                          << (status.ok() ? response.message() : status.error_message()) << std::endl;
-                outFile.close();
-                return;
+                blockData[offset] = response.data();
+                blockOk[offset] = true;
             }
         }
 
+        // Recuperar los bloques de datos, excepto paridad
+        for (int offset = 0; offset < 4 && blocksRecovered < totalDataBlocks; ++offset) {
+            int node = (parityNode + offset) % 4;
+            if (offset == 0) continue;  // Paridad
+
+            std::string data;
+            if (blockOk[offset]) {
+                data = blockData[offset];
+            } else {
+                // Reconstrucción por XOR
+                data.assign(blockSize, 0);
+                for (int j = 0; j < 4; ++j) {
+                    if (j == offset || !blockOk[j]) continue;
+                    for (int k = 0; k < blockData[j].size(); ++k) {
+                        data[k] ^= blockData[j][k];
+                    }
+                }
+                std::cout << "⚠️  Bloque " << blocksRecovered << " reconstruido por paridad XOR\n";
+            }
+
+            if (blocksRecovered == totalDataBlocks - 1) {
+                data.resize(lastBlockSize);
+            }
+
+            outFile.write(data.data(), data.size());
+            std::cout << "Bloque de datos " << blocksRecovered
+                      << " procesado (" << data.size() << " bytes)" << std::endl;
+            blocksRecovered++;
+        }
+
+        globalIndex += 4;
         group++;
     }
 
