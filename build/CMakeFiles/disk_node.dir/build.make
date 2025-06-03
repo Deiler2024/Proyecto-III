@@ -73,43 +73,43 @@ CMakeFiles/disk_node.dir/disk_node/disk_server.cpp.o: CMakeFiles/disk_node.dir/f
 CMakeFiles/disk_node.dir/disk_node/disk_server.cpp.o: /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/disk_node/disk_server.cpp
 CMakeFiles/disk_node.dir/disk_node/disk_server.cpp.o: CMakeFiles/disk_node.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/disk_node.dir/disk_node/disk_server.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/disk_node.dir/disk_node/disk_server.cpp.o -MF CMakeFiles/disk_node.dir/disk_node/disk_server.cpp.o.d -o CMakeFiles/disk_node.dir/disk_node/disk_server.cpp.o -c /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/disk_node/disk_server.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/disk_node.dir/disk_node/disk_server.cpp.o -MF CMakeFiles/disk_node.dir/disk_node/disk_server.cpp.o.d -o CMakeFiles/disk_node.dir/disk_node/disk_server.cpp.o -c /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/disk_node/disk_server.cpp
 
 CMakeFiles/disk_node.dir/disk_node/disk_server.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/disk_node.dir/disk_node/disk_server.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/disk_node/disk_server.cpp > CMakeFiles/disk_node.dir/disk_node/disk_server.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/disk_node/disk_server.cpp > CMakeFiles/disk_node.dir/disk_node/disk_server.cpp.i
 
 CMakeFiles/disk_node.dir/disk_node/disk_server.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/disk_node.dir/disk_node/disk_server.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/disk_node/disk_server.cpp -o CMakeFiles/disk_node.dir/disk_node/disk_server.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/disk_node/disk_server.cpp -o CMakeFiles/disk_node.dir/disk_node/disk_server.cpp.s
 
 CMakeFiles/disk_node.dir/common/generated/tecmfs.pb.cc.o: CMakeFiles/disk_node.dir/flags.make
 CMakeFiles/disk_node.dir/common/generated/tecmfs.pb.cc.o: /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/common/generated/tecmfs.pb.cc
 CMakeFiles/disk_node.dir/common/generated/tecmfs.pb.cc.o: CMakeFiles/disk_node.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/disk_node.dir/common/generated/tecmfs.pb.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/disk_node.dir/common/generated/tecmfs.pb.cc.o -MF CMakeFiles/disk_node.dir/common/generated/tecmfs.pb.cc.o.d -o CMakeFiles/disk_node.dir/common/generated/tecmfs.pb.cc.o -c /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/common/generated/tecmfs.pb.cc
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/disk_node.dir/common/generated/tecmfs.pb.cc.o -MF CMakeFiles/disk_node.dir/common/generated/tecmfs.pb.cc.o.d -o CMakeFiles/disk_node.dir/common/generated/tecmfs.pb.cc.o -c /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/common/generated/tecmfs.pb.cc
 
 CMakeFiles/disk_node.dir/common/generated/tecmfs.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/disk_node.dir/common/generated/tecmfs.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/common/generated/tecmfs.pb.cc > CMakeFiles/disk_node.dir/common/generated/tecmfs.pb.cc.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/common/generated/tecmfs.pb.cc > CMakeFiles/disk_node.dir/common/generated/tecmfs.pb.cc.i
 
 CMakeFiles/disk_node.dir/common/generated/tecmfs.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/disk_node.dir/common/generated/tecmfs.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/common/generated/tecmfs.pb.cc -o CMakeFiles/disk_node.dir/common/generated/tecmfs.pb.cc.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/common/generated/tecmfs.pb.cc -o CMakeFiles/disk_node.dir/common/generated/tecmfs.pb.cc.s
 
 CMakeFiles/disk_node.dir/common/generated/tecmfs.grpc.pb.cc.o: CMakeFiles/disk_node.dir/flags.make
 CMakeFiles/disk_node.dir/common/generated/tecmfs.grpc.pb.cc.o: /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/common/generated/tecmfs.grpc.pb.cc
 CMakeFiles/disk_node.dir/common/generated/tecmfs.grpc.pb.cc.o: CMakeFiles/disk_node.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/disk_node.dir/common/generated/tecmfs.grpc.pb.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/disk_node.dir/common/generated/tecmfs.grpc.pb.cc.o -MF CMakeFiles/disk_node.dir/common/generated/tecmfs.grpc.pb.cc.o.d -o CMakeFiles/disk_node.dir/common/generated/tecmfs.grpc.pb.cc.o -c /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/common/generated/tecmfs.grpc.pb.cc
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/disk_node.dir/common/generated/tecmfs.grpc.pb.cc.o -MF CMakeFiles/disk_node.dir/common/generated/tecmfs.grpc.pb.cc.o.d -o CMakeFiles/disk_node.dir/common/generated/tecmfs.grpc.pb.cc.o -c /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/common/generated/tecmfs.grpc.pb.cc
 
 CMakeFiles/disk_node.dir/common/generated/tecmfs.grpc.pb.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/disk_node.dir/common/generated/tecmfs.grpc.pb.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/common/generated/tecmfs.grpc.pb.cc > CMakeFiles/disk_node.dir/common/generated/tecmfs.grpc.pb.cc.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/common/generated/tecmfs.grpc.pb.cc > CMakeFiles/disk_node.dir/common/generated/tecmfs.grpc.pb.cc.i
 
 CMakeFiles/disk_node.dir/common/generated/tecmfs.grpc.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/disk_node.dir/common/generated/tecmfs.grpc.pb.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/common/generated/tecmfs.grpc.pb.cc -o CMakeFiles/disk_node.dir/common/generated/tecmfs.grpc.pb.cc.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/common/generated/tecmfs.grpc.pb.cc -o CMakeFiles/disk_node.dir/common/generated/tecmfs.grpc.pb.cc.s
 
 # Object files for target disk_node
 disk_node_OBJECTS = \
@@ -124,82 +124,82 @@ disk_node: CMakeFiles/disk_node.dir/disk_node/disk_server.cpp.o
 disk_node: CMakeFiles/disk_node.dir/common/generated/tecmfs.pb.cc.o
 disk_node: CMakeFiles/disk_node.dir/common/generated/tecmfs.grpc.pb.cc.o
 disk_node: CMakeFiles/disk_node.dir/build.make
-disk_node: /usr/local/lib/libgrpc++.a
+disk_node: /home/deiler/.local/lib/libgrpc++.a
 disk_node: /usr/local/lib/libprotobuf.so
 disk_node: /usr/lib/x86_64-linux-gnu/libxml2.so
-disk_node: /usr/local/lib/libgrpc.a
-disk_node: /usr/local/lib/libupb_json_lib.a
-disk_node: /usr/local/lib/libupb_textformat_lib.a
-disk_node: /usr/local/lib/libupb_message_lib.a
-disk_node: /usr/local/lib/libupb_base_lib.a
-disk_node: /usr/local/lib/libupb_mem_lib.a
-disk_node: /usr/local/lib/libutf8_range_lib.a
-disk_node: /usr/local/lib/libre2.a
-disk_node: /usr/local/lib/libz.a
-disk_node: /usr/local/lib/libabsl_statusor.a
-disk_node: /usr/local/lib/libcares.a
-disk_node: /usr/local/lib/libgpr.a
-disk_node: /usr/local/lib/libabsl_status.a
-disk_node: /usr/local/lib/libabsl_strerror.a
-disk_node: /usr/local/lib/libabsl_flags_internal.a
-disk_node: /usr/local/lib/libabsl_flags_reflection.a
-disk_node: /usr/local/lib/libabsl_raw_hash_set.a
-disk_node: /usr/local/lib/libabsl_hash.a
-disk_node: /usr/local/lib/libabsl_city.a
-disk_node: /usr/local/lib/libabsl_bad_variant_access.a
-disk_node: /usr/local/lib/libabsl_low_level_hash.a
-disk_node: /usr/local/lib/libabsl_hashtablez_sampler.a
-disk_node: /usr/local/lib/libabsl_flags_config.a
-disk_node: /usr/local/lib/libabsl_flags_program_name.a
-disk_node: /usr/local/lib/libabsl_flags_private_handle_accessor.a
-disk_node: /usr/local/lib/libabsl_flags_commandlineflag.a
-disk_node: /usr/local/lib/libabsl_flags_commandlineflag_internal.a
-disk_node: /usr/local/lib/libabsl_flags_marshalling.a
-disk_node: /usr/local/lib/libabsl_random_distributions.a
-disk_node: /usr/local/lib/libabsl_random_seed_sequences.a
-disk_node: /usr/local/lib/libabsl_random_internal_pool_urbg.a
-disk_node: /usr/local/lib/libabsl_random_internal_randen.a
-disk_node: /usr/local/lib/libabsl_random_internal_randen_hwaes.a
-disk_node: /usr/local/lib/libabsl_random_internal_randen_hwaes_impl.a
-disk_node: /usr/local/lib/libabsl_random_internal_randen_slow.a
-disk_node: /usr/local/lib/libabsl_random_internal_platform.a
-disk_node: /usr/local/lib/libabsl_random_internal_seed_material.a
-disk_node: /usr/local/lib/libabsl_random_seed_gen_exception.a
-disk_node: /usr/local/lib/libabsl_cord.a
-disk_node: /usr/local/lib/libabsl_bad_optional_access.a
-disk_node: /usr/local/lib/libabsl_cordz_info.a
-disk_node: /usr/local/lib/libabsl_cord_internal.a
-disk_node: /usr/local/lib/libabsl_cordz_functions.a
-disk_node: /usr/local/lib/libabsl_exponential_biased.a
-disk_node: /usr/local/lib/libabsl_cordz_handle.a
-disk_node: /usr/local/lib/libabsl_crc_cord_state.a
-disk_node: /usr/local/lib/libabsl_crc32c.a
-disk_node: /usr/local/lib/libabsl_str_format_internal.a
-disk_node: /usr/local/lib/libabsl_crc_internal.a
-disk_node: /usr/local/lib/libabsl_crc_cpu_detect.a
-disk_node: /usr/local/lib/libabsl_synchronization.a
-disk_node: /usr/local/lib/libabsl_stacktrace.a
-disk_node: /usr/local/lib/libabsl_symbolize.a
-disk_node: /usr/local/lib/libabsl_debugging_internal.a
-disk_node: /usr/local/lib/libabsl_demangle_internal.a
-disk_node: /usr/local/lib/libabsl_graphcycles_internal.a
-disk_node: /usr/local/lib/libabsl_kernel_timeout_internal.a
-disk_node: /usr/local/lib/libabsl_malloc_internal.a
-disk_node: /usr/local/lib/libabsl_time.a
-disk_node: /usr/local/lib/libabsl_strings.a
-disk_node: /usr/local/lib/libabsl_int128.a
-disk_node: /usr/local/lib/libabsl_strings_internal.a
-disk_node: /usr/local/lib/libabsl_string_view.a
-disk_node: /usr/local/lib/libabsl_throw_delegate.a
-disk_node: /usr/local/lib/libabsl_base.a
-disk_node: /usr/local/lib/libabsl_spinlock_wait.a
-disk_node: /usr/local/lib/libabsl_raw_logging_internal.a
-disk_node: /usr/local/lib/libabsl_log_severity.a
-disk_node: /usr/local/lib/libabsl_civil_time.a
-disk_node: /usr/local/lib/libabsl_time_zone.a
-disk_node: /usr/local/lib/libssl.a
-disk_node: /usr/local/lib/libcrypto.a
-disk_node: /usr/local/lib/libaddress_sorting.a
+disk_node: /home/deiler/.local/lib/libgrpc.a
+disk_node: /home/deiler/.local/lib/libupb_json_lib.a
+disk_node: /home/deiler/.local/lib/libupb_textformat_lib.a
+disk_node: /home/deiler/.local/lib/libupb_message_lib.a
+disk_node: /home/deiler/.local/lib/libupb_base_lib.a
+disk_node: /home/deiler/.local/lib/libupb_mem_lib.a
+disk_node: /home/deiler/.local/lib/libutf8_range_lib.a
+disk_node: /home/deiler/.local/lib/libre2.a
+disk_node: /home/deiler/.local/lib/libz.a
+disk_node: /home/deiler/.local/lib/libabsl_statusor.a
+disk_node: /home/deiler/.local/lib/libcares.a
+disk_node: /home/deiler/.local/lib/libgpr.a
+disk_node: /home/deiler/.local/lib/libabsl_status.a
+disk_node: /home/deiler/.local/lib/libabsl_strerror.a
+disk_node: /home/deiler/.local/lib/libabsl_flags_internal.a
+disk_node: /home/deiler/.local/lib/libabsl_flags_reflection.a
+disk_node: /home/deiler/.local/lib/libabsl_raw_hash_set.a
+disk_node: /home/deiler/.local/lib/libabsl_hash.a
+disk_node: /home/deiler/.local/lib/libabsl_city.a
+disk_node: /home/deiler/.local/lib/libabsl_bad_variant_access.a
+disk_node: /home/deiler/.local/lib/libabsl_low_level_hash.a
+disk_node: /home/deiler/.local/lib/libabsl_hashtablez_sampler.a
+disk_node: /home/deiler/.local/lib/libabsl_flags_config.a
+disk_node: /home/deiler/.local/lib/libabsl_flags_program_name.a
+disk_node: /home/deiler/.local/lib/libabsl_flags_private_handle_accessor.a
+disk_node: /home/deiler/.local/lib/libabsl_flags_commandlineflag.a
+disk_node: /home/deiler/.local/lib/libabsl_flags_commandlineflag_internal.a
+disk_node: /home/deiler/.local/lib/libabsl_flags_marshalling.a
+disk_node: /home/deiler/.local/lib/libabsl_random_distributions.a
+disk_node: /home/deiler/.local/lib/libabsl_random_seed_sequences.a
+disk_node: /home/deiler/.local/lib/libabsl_random_internal_pool_urbg.a
+disk_node: /home/deiler/.local/lib/libabsl_random_internal_randen.a
+disk_node: /home/deiler/.local/lib/libabsl_random_internal_randen_hwaes.a
+disk_node: /home/deiler/.local/lib/libabsl_random_internal_randen_hwaes_impl.a
+disk_node: /home/deiler/.local/lib/libabsl_random_internal_randen_slow.a
+disk_node: /home/deiler/.local/lib/libabsl_random_internal_platform.a
+disk_node: /home/deiler/.local/lib/libabsl_random_internal_seed_material.a
+disk_node: /home/deiler/.local/lib/libabsl_random_seed_gen_exception.a
+disk_node: /home/deiler/.local/lib/libabsl_cord.a
+disk_node: /home/deiler/.local/lib/libabsl_bad_optional_access.a
+disk_node: /home/deiler/.local/lib/libabsl_cordz_info.a
+disk_node: /home/deiler/.local/lib/libabsl_cord_internal.a
+disk_node: /home/deiler/.local/lib/libabsl_cordz_functions.a
+disk_node: /home/deiler/.local/lib/libabsl_exponential_biased.a
+disk_node: /home/deiler/.local/lib/libabsl_cordz_handle.a
+disk_node: /home/deiler/.local/lib/libabsl_crc_cord_state.a
+disk_node: /home/deiler/.local/lib/libabsl_crc32c.a
+disk_node: /home/deiler/.local/lib/libabsl_str_format_internal.a
+disk_node: /home/deiler/.local/lib/libabsl_crc_internal.a
+disk_node: /home/deiler/.local/lib/libabsl_crc_cpu_detect.a
+disk_node: /home/deiler/.local/lib/libabsl_synchronization.a
+disk_node: /home/deiler/.local/lib/libabsl_stacktrace.a
+disk_node: /home/deiler/.local/lib/libabsl_symbolize.a
+disk_node: /home/deiler/.local/lib/libabsl_debugging_internal.a
+disk_node: /home/deiler/.local/lib/libabsl_demangle_internal.a
+disk_node: /home/deiler/.local/lib/libabsl_graphcycles_internal.a
+disk_node: /home/deiler/.local/lib/libabsl_kernel_timeout_internal.a
+disk_node: /home/deiler/.local/lib/libabsl_malloc_internal.a
+disk_node: /home/deiler/.local/lib/libabsl_time.a
+disk_node: /home/deiler/.local/lib/libabsl_strings.a
+disk_node: /home/deiler/.local/lib/libabsl_int128.a
+disk_node: /home/deiler/.local/lib/libabsl_strings_internal.a
+disk_node: /home/deiler/.local/lib/libabsl_string_view.a
+disk_node: /home/deiler/.local/lib/libabsl_throw_delegate.a
+disk_node: /home/deiler/.local/lib/libabsl_base.a
+disk_node: /home/deiler/.local/lib/libabsl_spinlock_wait.a
+disk_node: /home/deiler/.local/lib/libabsl_raw_logging_internal.a
+disk_node: /home/deiler/.local/lib/libabsl_log_severity.a
+disk_node: /home/deiler/.local/lib/libabsl_civil_time.a
+disk_node: /home/deiler/.local/lib/libabsl_time_zone.a
+disk_node: /home/deiler/.local/lib/libssl.a
+disk_node: /home/deiler/.local/lib/libcrypto.a
+disk_node: /home/deiler/.local/lib/libaddress_sorting.a
 disk_node: /usr/local/lib/libprotobuf.so
 disk_node: CMakeFiles/disk_node.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/deiler/Documentos/GitHub/Proyecto-III/TECMFS/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable disk_node"
