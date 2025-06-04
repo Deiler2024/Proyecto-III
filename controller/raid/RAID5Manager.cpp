@@ -97,19 +97,18 @@ std::pair<int, int> RAID5Manager::WriteFile(const std::string& filepath) {
     return {writtenDataBlocks, lastBlockSize};
 }
 
-void RAID5Manager::ReadFile(const std::string& outputPath, const std::string& originalFilename) {
+bool RAID5Manager::ReadFile(const std::string& outputPath, const std::string& originalFilename) {
     MetadataManager meta;
     auto [totalDataBlocks, lastBlockSize] = meta.LoadMetadata(originalFilename);
     if (totalDataBlocks == 0 || lastBlockSize == 0) {
         std::cerr << "❌ Error: No se encontraron metadatos para '" << originalFilename << "'." << std::endl;
-        return;
+        return false;
     }
 
-    
     std::ofstream outFile(outputPath, std::ios::binary);
     if (!outFile) {
         std::cerr << "No se pudo crear el archivo: " << outputPath << std::endl;
-        return;
+        return false;
     }
 
     const int blockSize = 4096;
@@ -124,7 +123,7 @@ void RAID5Manager::ReadFile(const std::string& outputPath, const std::string& or
             int node = (parityNode + offset) % 4;
 
             if (offset == 0) {
-                globalIndex++; // Saltar bloque de paridad
+                globalIndex++;
                 continue;
             }
 
@@ -142,7 +141,6 @@ void RAID5Manager::ReadFile(const std::string& outputPath, const std::string& or
                 }
 
                 outFile.write(data.data(), data.size());
-
                 std::cout << "Bloque de datos " << blocksRecovered
                           << " leído desde Nodo " << node << " (" << data.size() << " bytes)" << std::endl;
 
@@ -152,7 +150,7 @@ void RAID5Manager::ReadFile(const std::string& outputPath, const std::string& or
                           << " del Nodo " << node << ": "
                           << (status.ok() ? response.message() : status.error_message()) << std::endl;
                 outFile.close();
-                return;
+                return false;
             }
         }
 
@@ -161,7 +159,9 @@ void RAID5Manager::ReadFile(const std::string& outputPath, const std::string& or
 
     outFile.close();
     std::cout << "Archivo RAID reconstruido como: " << outputPath << std::endl;
+    return true;
 }
+
 
 void RAID5Manager::ListFiles() {
     MetadataManager meta;

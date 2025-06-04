@@ -39,3 +39,10 @@ ejecutar controller (estando en la raiz):
 
 
 ./build/controller
+
+
+
+source venv_gui/bin/activate               ambiente virtual
+
+
+ejecutar la interfas: python3 tecmfs_gui.py
