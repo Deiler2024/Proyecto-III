@@ -9,7 +9,8 @@ public:
 
     // Usa el nombre base para acceder a metadatos por archivo
     std::pair<int, int> WriteFile(const std::string& filepath);
-    void ReadFile(const std::string& outputPath, const std::string& originalFilename);
+    bool ReadFile(const std::string& outputPath, const std::string& originalFilename);
+
     void ListFiles();
     void DeleteFile(const std::string& filename);
 

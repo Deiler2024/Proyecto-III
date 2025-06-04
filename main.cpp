@@ -32,8 +32,11 @@ int main(int argc, char** argv) {
     } else if (command == "read" && argc == 4) {
         std::string archivoOriginal = argv[2];
         std::string archivoRecuperado = argv[3];
-        raid.ReadFile(archivoRecuperado, archivoOriginal);
-        Logger::Info("Archivo recuperado como: " + archivoRecuperado);
+        if (raid.ReadFile(archivoRecuperado, archivoOriginal)) {
+            Logger::Info("Archivo recuperado como: " + archivoRecuperado);
+        } else {
+            Logger::Error("No se pudo recuperar el archivo '" + archivoOriginal + "'.");
+        }
 
     } else if (command == "delete" && argc == 3) {
         std::string archivoAEliminar = argv[2];
