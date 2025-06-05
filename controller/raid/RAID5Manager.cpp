@@ -118,42 +118,64 @@ bool RAID5Manager::ReadFile(const std::string& outputPath, const std::string& or
 
     while (blocksRecovered < totalDataBlocks) {
         int parityNode = group % 4;
+        std::vector<std::pair<int, std::string>> blocks(4);  // índice de nodo → datos
+        int failedNode = -1;
 
-        for (int offset = 0; offset < 4 && blocksRecovered < totalDataBlocks; ++offset) {
+        // Leer los 4 bloques (3 datos + 1 paridad)
+        for (int offset = 0; offset < 4; ++offset) {
             int node = (parityNode + offset) % 4;
-
-            if (offset == 0) {
-                globalIndex++;
-                continue;
-            }
-
             BlockIndex request;
-            request.set_index(globalIndex++);
+            request.set_index(globalIndex + offset);
 
             BlockData response;
             ClientContext context;
             Status status = controller_.GetStub(node)->ReadBlock(&context, request, &response);
 
             if (status.ok() && response.success()) {
-                std::string data = response.data();
-                if (blocksRecovered == totalDataBlocks - 1) {
-                    data.resize(lastBlockSize);
-                }
-
-                outFile.write(data.data(), data.size());
-                std::cout << "Bloque de datos " << blocksRecovered
-                          << " leído desde Nodo " << node << " (" << data.size() << " bytes)" << std::endl;
-
-                blocksRecovered++;
+                blocks[offset] = {node, response.data()};
             } else {
-                std::cerr << "❌ Error al leer bloque de datos " << blocksRecovered
-                          << " del Nodo " << node << ": "
-                          << (status.ok() ? response.message() : status.error_message()) << std::endl;
-                outFile.close();
-                return false;
+                failedNode = offset;
+                std::cerr << "⚠️ Nodo " << node << " falló en bloque " << request.index() << std::endl;
             }
         }
 
+        // Si hubo una falla, intentamos reconstruir
+        for (int offset = 0; offset < 4 && blocksRecovered < totalDataBlocks; ++offset) {
+            int node = (parityNode + offset) % 4;
+
+            if (offset == 0) {
+                continue;  // este es el bloque de paridad
+            }
+
+            std::string data;
+            if (!blocks[offset].second.empty()) {
+                data = blocks[offset].second;
+            } else {
+                // Reconstrucción por XOR
+                data = std::string(blockSize, 0);
+                for (int i = 0; i < 4; ++i) {
+                    if (i == offset) continue;
+                    const std::string& otherData = blocks[i].second;
+                    for (size_t j = 0; j < otherData.size(); ++j) {
+                        data[j] ^= otherData[j];
+                    }
+                }
+                std::cout << "🔧 Bloque de datos " << blocksRecovered
+                          << " reconstruido usando paridad." << std::endl;
+            }
+
+            if (blocksRecovered == totalDataBlocks - 1) {
+                data.resize(lastBlockSize);
+            }
+
+            outFile.write(data.data(), data.size());
+            std::cout << "✅ Bloque de datos " << blocksRecovered
+                      << " procesado desde grupo " << group << std::endl;
+
+            blocksRecovered++;
+        }
+
+        globalIndex += 4;
         group++;
     }
 
@@ -161,6 +183,7 @@ bool RAID5Manager::ReadFile(const std::string& outputPath, const std::string& or
     std::cout << "Archivo RAID reconstruido como: " << outputPath << std::endl;
     return true;
 }
+
 
 
 void RAID5Manager::ListFiles() {
