@@ -32,6 +32,10 @@ layout = [
         [sg.Button("Listar archivos")]
     ])],
 
+    [sg.Frame("Visualizar estado de bloques", [
+        [sg.Button("Mostrar estado de nodos")]
+    ])],
+
     [sg.Output(size=(100, 25), key='-OUTPUT-')],
     [sg.Button("Salir")]
 ]
@@ -71,5 +75,8 @@ while True:
     elif event == "Listar archivos":
         cmd = "./build/controller"
         print(run_command(cmd))
+
+    elif event == "Mostrar estado de nodos":
+        os.system("python3 estado_bloques.py")  # ← Este script debe estar en la misma carpeta
 
 window.close()
