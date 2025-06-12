@@ -164,10 +164,20 @@ class DiskServiceImpl final : public DiskService::Service {
         
             std::string filename = config_.path + "/block_" + std::to_string(index) + ".bin";
             if (std::filesystem::exists(filename)) {
-                std::filesystem::remove(filename);
+                std::ofstream blockFile(filename, std::ios::binary | std::ios::trunc);
+                if (!blockFile) {
+                    response->set_success(false);
+                    response->set_message("No se pudo abrir el bloque para vaciarlo.");
+                    return Status::OK;
+                }
+        
+                std::vector<char> emptyBlock(config_.blockSize, 0);
+                blockFile.write(emptyBlock.data(), emptyBlock.size());
+                blockFile.close();
+        
                 response->set_success(true);
-                response->set_message("Bloque eliminado exitosamente");
-                std::cout << "Bloque " << index << " eliminado.\n";
+                response->set_message("Bloque vaciado exitosamente");
+                std::cout << "Bloque " << index << " vaciado (relleno con ceros).\n";
             } else {
                 response->set_success(false);
                 response->set_message("El archivo de bloque no existe");
@@ -175,6 +185,7 @@ class DiskServiceImpl final : public DiskService::Service {
         
             return Status::OK;
         }
+        
         
         
     
